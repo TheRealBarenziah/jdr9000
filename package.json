@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for SitePoint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michiel Mulders",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.1.0",
+    "erlpack": "^0.1.3",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "node-opus": "^0.3.3",
+    "path": "^0.12.7",
+    "utf-8-validate": "^5.0.2"
+  }
+}
