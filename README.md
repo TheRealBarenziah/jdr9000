@@ -1,20 +1,23 @@
 # jdr9000  
-A basic Discord bot.  
-![Megumin](https://i.ibb.co/FYBH6Xf/a-E2ebpp-460s.jpg)  
+A basic Discord RP bot.  
+<p align="center">
+  <img width="460" height="460" src="https://i.ibb.co/FYBH6Xf/a-E2ebpp-460s.jpg">
+</p>
 
 ## Features:  
--  `/omaewa` Post a picture + mention)  
--  `/judgement` Come in channel to play a sound)  
--  `/stop` Stop the sound played with `/judgement`)  
+-  `/omaewa` Post a picture + mention  
+-  `/judgement` Come in channel to play a sound (Currently set to *Judgement Knights Of Thunder*)  
+-  `/stop` Stop the sound played with `/judgement`  
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
+-  `/man jdr9000` to list above commands in Discord  
 
 ## Dependencies:  
+- [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) (terminal)  
 - [FFMPEG](https://www.ffmpeg.org/download.html)  
-- Shell (terminal)  
 - [Node.js](https://nodejs.org/en/download/) >= 12  
 
 ## Launch project:  
--  First time (in terminal): `git clone`  
+-  First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000.git && cd ./jdr9000`  
 -  Rename `.env.template` into `.env`  
 -  Change TOKEN field with your own [API key](https://discord.com/developers/applications) (ex: `TOKEN=yournewapikey`)  
 -  First time launch: `npm i && node index.js`  
