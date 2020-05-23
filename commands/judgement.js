@@ -3,7 +3,7 @@ const soundsDir = require('../assets/sounds/soundsDir')
 
 module.exports = {
   name: 'judgement',
-  description: 'Judgement Knights of Thunder !',
+  description: 'Will play Judgement Knights of Thunder in your voicecom !',
   execute(msg, args) {
     const voiceChannel = msg.member.voiceChannel
     if (typeof voiceChannel !== "undefined") {

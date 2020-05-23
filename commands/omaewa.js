@@ -1,6 +1,6 @@
 module.exports = {
   name: 'omaewa',
-  description: 'omae wa wo shindeiru!',
+  description: 'Calls the spirit of Hokuto no Ken upon the invoker (or someone else, if you provide a ping as argument).',
   execute(msg, args) {
     if (args.length === 0) {
       msg.channel.send('Omae wa wo shindeiru !', { files: ["https://i.imgflip.com/2kpfci.jpg"] })

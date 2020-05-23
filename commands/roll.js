@@ -5,7 +5,7 @@ const isInt = require('../utils/regex').isInt;
 
 module.exports = {
   name: 'roll',
-  description: "They see me rollin' they hatin'",
+  description: "Takes an argument `/roll XdY` where X is the number of dices you want, & Y the number of faces for the dices.",
   execute(msg, args) {
     const parsedArg = args[0].split("d")
     if (parsedArg.length !== 2) {
