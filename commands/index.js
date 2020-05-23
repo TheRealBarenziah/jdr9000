@@ -3,5 +3,6 @@ module.exports = {
     man: require('./man'),
     roll: require('./roll'),
     judgement: require('./judgement'),
-    stop: require('./stop')
+    stop: require('./stop'),
+    gandalf: require('./gandalf')
 };
