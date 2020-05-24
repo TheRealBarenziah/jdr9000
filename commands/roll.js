@@ -1,15 +1,14 @@
-const roll = require('../utils/roll.js');
-const colorizeText = require('../utils/colorizeText.js');
-const isNumeric = require('../utils/isNumeric.js');
-const isInt = require('../utils/regex').isInt;
+const roll = require("../utils/roll.js");
+const colorizeText = require("../utils/colorizeText.js");
+const isNumeric = require("../utils/isNumeric.js");
 
 module.exports = {
-  name: 'roll',
+  name: "roll",
   description: "Takes an argument `/roll XdY` where X is the number of dices you want, & Y the number of faces for the dices.",
   execute(msg, args) {
-    const parsedArg = args[0].split("d")
+    const parsedArg = args[0].split("d");
     if (parsedArg.length !== 2) {
-      msg.channel.send('Argument format invalid: must be `/roll XdY` where X is the number of dices & Y the number of faces for each dice !');
+      msg.channel.send("Argument format invalid: must be `/roll XdY` where X is the number of dices & Y the number of faces for each dice !");
       return 0;
     }
     else {
@@ -21,17 +20,17 @@ module.exports = {
 
           let results = [];
           for (let i = 0; i < diceQty; i++) {
-            results.push(roll(diceSize))
+            results.push(roll(diceSize));
           }
-          msg.channel.send("Rolling " + diceQty + "d" + diceSize + ". Results :\n" + colorizeText.orange(results.toString()))
+          msg.channel.send("Rolling " + diceQty + "d" + diceSize + ". Results :\n" + colorizeText.orange(results.toString()));
         }
         else {
-          msg.channel.send('Argument invalid: must be `/roll XdY` where X is maximum 100 & Y is maximum 1000 !');
+          msg.channel.send("Argument invalid: must be `/roll XdY` where X is maximum 100 & Y is maximum 1000 !");
           return 0;
         }
       }
       else {
-        msg.channel.send('Argument invalid: must be `/roll XdY` where X and Y are numeric values !');
+        msg.channel.send("Argument invalid: must be `/roll XdY` where X and Y are numeric values !");
         return 0;
       }
     }

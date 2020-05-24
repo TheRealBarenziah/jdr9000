@@ -1,13 +1,26 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "description": "Discord bot for SitePoint",
+  "description": "Simple RP Discord bot",
+  "author":"TheRealBarenziah",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint --color . --ext .js,.jsx",
+    "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js,.jsx"
   },
-  "author": "Michiel Mulders",
-  "license": "ISC",
+  "keywords": [
+    "Discord",
+    "Discord bot",
+    "RP bot",
+    "Roleplay bot"
+  ],
+  "license": "SEE LICENSE IN TARGARYEN_UNLICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRealBarenziah/jdr9000.git"
+  },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^11.5.1",
@@ -20,5 +33,9 @@
     "node-opus": "^0.3.3",
     "path": "^0.12.7",
     "utf-8-validate": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "nodemon": "^2.0.4"
   }
 }
