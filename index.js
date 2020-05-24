@@ -10,6 +10,7 @@ Object.keys(botCommands).map(key => {
 });
 
 bot.commands.set(man.name, man);
+bot.commands.set("jdr9000", man);
 
 const TOKEN = process.env.TOKEN;
 const prefix = process.env.prefix;

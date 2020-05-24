@@ -5,8 +5,8 @@ const commandsDir = require("../commands/commandsDir.js");
 module.exports = {
   name: "man",
   description: "Manual for jdr9000. Can take a command as argument.",
-  async execute(msg, args) {
-    let commands = [];
+  execute(msg, args) {
+    let commands = ["man command"];
     let arg = args.toString();
 
     fs.readdirSync(commandsDir)
@@ -17,13 +17,8 @@ module.exports = {
           null;
       });
 
-    if ((arg === "jdr9000") || (arg === [])) {
-      msg.channel.send("Available commands:\n");
-      commands.forEach(command => {
-        if ((command !== "index") && (command !== "commandsDir")) {
-          msg.channel.send("/"+command);
-        }
-      });
+    if ((arg === "jdr9000") || (args.length === 0)) {
+      msg.channel.send(`\`\`\`Available commands:\n${commands.map(c => `/${c}\n`).join("")}\n\`\`\``);
     }
     else if (commands.includes(arg)){
       msg.channel.send(`${arg}: ${jdr9000[arg].description}`);
