@@ -3,7 +3,7 @@ const path = require("path");
 const templateInit = require("../utils/templateInit");
 const playersJson = require("../assets/jsons/players.json");
 const formatStats = require("../utils/format").stats;
-const isUpdateInputValid = require("../utils/isUpdateInputValid")
+const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
       msg.channel.send("O args");
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
-      msg.author.send(`Your stats :\n ${data}.\n To update use \`/jdr update\``);
+      msg.author.send(`Your stats :\n${formatStats(data[invokerId].stats)}\n To update use \`/jdr update\``);
       // todo: display player stat only
     }
     else if ((args.length === 1) && (args[0] === "debug")) {
