@@ -2,7 +2,7 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "Simple RP Discord bot",
-  "author":"TheRealBarenziah",
+  "author": "TheRealBarenziah",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

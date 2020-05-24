@@ -16,13 +16,24 @@ module.exports = {
           :
           null;
       });
+    if ((args[0] === "jdr") && (args.length === 2)) {
+      if (args[1] === "init") {
+        msg.author.send("Init takes one argument: your roleplay name. Ex: `/jdr init Clem`");
+      }
+      if (args[1] === "update") {
+        msg.author.send("That command takes 2 another arguments: the stat you want to modify (format: mainStat.subStat) and the new value. Ex: `/jdr update force.puissance 80` will set your puissance to 80\n__Stats (mainStat is first)__:\n**adresse**(artisanat, visee, minutie)\n**agilite**(souplesse, reflexe, mouvement)\n**force**(athletisme, puissance, constitution)\n**social**(aura, parole, sangFroid)\n**magie**(puissance, adresse, reflexe)\n**savoirMagique**(perception, education, intuition)\n**artsDeLaGuerre**(perception, education, pratique)");
+      }
+      if (args[1] === "stats") {
+        msg.author.send("It displays your stats... But since you dared, here's a nyan cat just for you:", { files: ["https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif"] });
+      }
+    }
 
-    if ((arg === "jdr9000") || (args.length === 0)) {
+    else if ((arg === "jdr9000") || (args.length === 0)) {
       msg.author.send(`\`\`\`Available commands:\n${commands.map(c => `/${c}\n`).join("")}\n\`\`\``);
     }
-    else if (commands.includes(arg)){
+    else if (commands.includes(arg)) {
       msg.author.send(`${arg}: ${jdr9000[arg].description}`);
     }
     else msg.author.send("Command invalid: try **/man jdr9000** (or **/man *command*** to learn about a specific command)");
-  },
+  }
 };

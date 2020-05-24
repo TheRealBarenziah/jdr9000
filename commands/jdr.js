@@ -1,73 +1,61 @@
-let playersJson = require("../assets/jsons/players.json");
+const fs = require("fs");
+const path = require("path");
+const templateInit = require("../utils/templateInit");
+const playersJson = require("../assets/jsons/players.json");
+const formatStats = require("../utils/format").stats;
+const isUpdateInputValid = require("../utils/isUpdateInputValid")
+const writeJson = require("../utils/writeJson");
 
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.\n`/jdr init` yourIgPseudo: initialize your character sheet\n`/jdr stats`: display your character sheet",
+  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr update`\n\nUse `/man jdr command` to learn more about a specific command.",
   execute(msg, args) {
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../assets/jsons/players.json"), { encoding: "utf-8" }));
+    const invokerId = msg.author.id;
+    const invokerUsername = msg.author.username;
+    const invokerHashtag = msg.author.discriminator;
+
+
     if (args.length === 0) {
       // todo: goto man /jdr
       msg.channel.send("O args");
     }
+    else if ((args.length === 1) && (args[0] === "stats")) {
+      msg.author.send(`Your stats :\n ${data}.\n To update use \`/jdr update\``);
+      // todo: display player stat only
+    }
+    else if ((args.length === 1) && (args[0] === "debug")) {
+      //console.log("debug, playersJson = ", playersJson);
+    }
     else if ((args.length === 2)) {
-      if(args[0] === "init"){
-        // valid arg 1: init
-        const invokerId = msg.author.id;
-        const invokerUsername = msg.author.username;
-        const invokerHashtag = msg.author.discriminator;
-        const isInvokerInJson = typeof playersJson[invokerId] !== "undefined";
-        console.log("Invoker id = ", invokerId);
-        console.log("Invoker username = ", invokerUsername);
-        console.log("Is invoker in JSON ? ", isInvokerInJson);
-        if(isInvokerInJson){
+      // INIT
+      if (args[0] === "init") {
+        const isInvokerInJson = typeof data[invokerId] !== "undefined";
+        if (isInvokerInJson) {
           msg.author.send(`You (${invokerUsername}#${invokerHashtag}) had initialized your stats already, those are:\n ${JSON.stringify(playersJson[invokerId])}.\n To update use \`/jdr update\``);
         }
-        else{
-          playersJson[invokerId] = {
-            "discordName": invokerUsername,
-            "rpName": args[1] ? args[1] : "Default",
-            "stats": {
-              "adresse": {
-                "artisanat": 0,
-                "visee": 0,
-                "minutie": 0
-              },
-              "agilite": {
-                "souplesse": 0,
-                "reflexe": 0,
-                "mouvement": 0
-              },
-              "force": {
-                "athletisme": 0,
-                "puissancePhysique": 0,
-                "constitution": 0
-              },
-              "social": {
-                "aura": 0,
-                "parole": 0,
-                "sangFroid": 0
-              },
-              "magie": {
-                "puissance": 0,
-                "adresse": 0,
-                "reflexe": 0
-              },
-              "savoirMagique": {
-                "perception": 0,
-                "education": 0,
-                "intuition": 0
-              },
-              "artsDeLaGuerre": {
-                "perception": 0,
-                "education": 0,
-                "pratique": 0
-              }
-            },
-            "competences": []
-          };
-          msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing...`);
+        else {
+          const init = templateInit(invokerUsername, args[1]);
+          const jsonContent = JSON.stringify({ ...playersJson, [invokerId]: init });
+          msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing... Type \`\\jdr stats\` to see your stats or \`\\jdr update\` to update them.`);
+          writeJson(jsonContent);
         }
       }
+
       else msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
+    }
+    else if ((args.length === 3)) {
+      if (args[0] === "update") {
+        // UPDATE
+        if (isUpdateInputValid(args[1], args[2])) {
+          const mainStat = args[1].split(".")[0];
+          const offStat = args[1].split(".")[1];
+          data[invokerId].stats[mainStat][offStat] = args[2];
+          writeJson(JSON.stringify(data));
+          msg.author.send(`Updated. Your stats now are: ${formatStats(data[invokerId].stats)}`);
+        }
+        else msg.author.send("Input invalid, please see `/man jdr update`");
+      }
     }
     else msg.author.send("To initialize your character sheet, please type `/jdr init yourRpName`");
   },
