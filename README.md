@@ -1,6 +1,8 @@
 # jdr9000  
 <p align="center">
   <img width="460" height="460" src="https://i.ibb.co/FYBH6Xf/a-E2ebpp-460s.jpg">
+</p>
+<p align="center">
   A simple Discord bot
 </p>
 
