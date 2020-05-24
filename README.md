@@ -10,7 +10,8 @@ A basic Discord RP bot.
 -  `/stop` Stop the sound played with `/judgement`  
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
--  `/man jdr9000` to list above commands in Discord  
+-  `/jdr` Commands useful for roleplay (work in progress; only `/jdr init` currently available)  
+-  `/man` to list above commands in Discord  
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) (terminal)  
