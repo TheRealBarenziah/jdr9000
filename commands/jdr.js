@@ -2,7 +2,7 @@ let playersJson = require("../assets/jsons/players.json");
 
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.",
+  description: "A set of commands related to roleplay.\n`/jdr init` yourIgPseudo: initialize your character sheet\n`/jdr stats`: display your character sheet",
   execute(msg, args) {
     if (args.length === 0) {
       // todo: goto man /jdr
@@ -26,12 +26,44 @@ module.exports = {
             "discordName": invokerUsername,
             "rpName": args[1] ? args[1] : "Default",
             "stats": {
-              "a": 90,
-              "b": 60,
-              "c": 40
-            } 
+              "adresse": {
+                "artisanat": 0,
+                "visee": 0,
+                "minutie": 0
+              },
+              "agilite": {
+                "souplesse": 0,
+                "reflexe": 0,
+                "mouvement": 0
+              },
+              "force": {
+                "athletisme": 0,
+                "puissancePhysique": 0,
+                "constitution": 0
+              },
+              "social": {
+                "aura": 0,
+                "parole": 0,
+                "sangFroid": 0
+              },
+              "magie": {
+                "puissance": 0,
+                "adresse": 0,
+                "reflexe": 0
+              },
+              "savoirMagique": {
+                "perception": 0,
+                "education": 0,
+                "intuition": 0
+              },
+              "artsDeLaGuerre": {
+                "perception": 0,
+                "education": 0,
+                "pratique": 0
+              }
+            },
+            "competences": []
           };
-
           msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing...`);
         }
       }
