@@ -18,11 +18,11 @@ module.exports = {
       });
 
     if ((arg === "jdr9000") || (args.length === 0)) {
-      msg.channel.send(`\`\`\`Available commands:\n${commands.map(c => `/${c}\n`).join("")}\n\`\`\``);
+      msg.author.send(`\`\`\`Available commands:\n${commands.map(c => `/${c}\n`).join("")}\n\`\`\``);
     }
     else if (commands.includes(arg)){
-      msg.channel.send(`${arg}: ${jdr9000[arg].description}`);
+      msg.author.send(`${arg}: ${jdr9000[arg].description}`);
     }
-    else msg.channel.send("Command invalid: try **/man jdr9000** (or **/man *command*** to learn about a specific command)");
+    else msg.author.send("Command invalid: try **/man jdr9000** (or **/man *command*** to learn about a specific command)");
   },
 };
