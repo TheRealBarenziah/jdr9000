@@ -48,10 +48,10 @@ module.exports = {
       if (args[0] === "createSkill") {
         msg.author.send("You're in createSkill method, congratz");
       }
-      if (args[0] === "deleteSkill") {
+      else if (args[0] === "deleteSkill") {
         msg.author.send("You're in deleteSkill method, congratz");
       }
-      if (args[0] === "updateSkill") {
+      else if (args[0] === "updateSkill") {
         msg.author.send("You're in updateSkill method, congratz");
       }
 
