@@ -3,7 +3,7 @@ const soundsDir = require("../assets/sounds/soundsDir");
 
 module.exports = {
   name: "gandalf",
-  description: "Post a Gandalf gif. If you are in a voice chat, he will also come to say a line.",
+  description: "If you are in a voice chat, post a gif, and Gandalf will come to say a line in your voicecom.",
   execute(msg) {
     const voiceChannel = msg.member.voiceChannel;
     if (typeof voiceChannel !== "undefined") {
