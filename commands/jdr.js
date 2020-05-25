@@ -9,7 +9,7 @@ const writeJson = require("../utils/writeJson");
 
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n\nUse `/man jdr command` to learn more about a specific command.",
+  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n`/jdr createSkill`\n`/jdr updateSkill`\n`/jdr deleteSkill`\n\nUse `/man jdr command` to learn more about a specific command.",
   execute(msg, args) {
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../assets/jsons/players.json"), { encoding: "utf-8" }));
     const invokerId = msg.author.id;

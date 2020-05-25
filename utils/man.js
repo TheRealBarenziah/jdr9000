@@ -31,6 +31,15 @@ module.exports = {
       else if (args[1] === "stats") {
         msg.author.send("It displays your stats... But since you dared, here's a nyan cat just for you:", { files: ["https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif"] });
       }
+      else if (args[1] === "createSkill") {
+        msg.author.send("Don't try me");
+      }
+      else if (args[1] === "updateSkill") {
+        msg.author.send("Outrageous! This incident will be reported...");
+      }
+      else if (args[1] === "deleteSkill") {
+        msg.author.send("Get lost :o");
+      }
     }
 
     else if ((arg === "jdr9000") || (args.length === 0)) {
