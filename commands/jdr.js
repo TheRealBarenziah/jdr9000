@@ -21,8 +21,7 @@ module.exports = {
       msg.channel.send("O args");
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
-      msg.author.send(`Your stats :\n ${data}.\n To update use \`/jdr update\``);
-      // todo: display player stat only
+      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\n To update use \`/jdr update\``);
     }
     else if ((args.length === 1) && (args[0] === "debug")) {
       //console.log("debug, playersJson = ", playersJson);
