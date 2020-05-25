@@ -3,12 +3,13 @@ const path = require("path");
 const templateInit = require("../utils/templateInit");
 const playersJson = require("../assets/jsons/players.json");
 const formatStats = require("../utils/format").stats;
+const formatSkills = require("../utils/format").skills;
 const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
 
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr update`\n\nUse `/man jdr command` to learn more about a specific command.",
+  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n\nUse `/man jdr command` to learn more about a specific command.",
   execute(msg, args) {
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../assets/jsons/players.json"), { encoding: "utf-8" }));
     const invokerId = msg.author.id;
@@ -21,9 +22,11 @@ module.exports = {
       msg.channel.send("O args");
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
-			const competenceTest = JSON.stringify(data[invokerId].competences[0])
-			console.log("bleh ", competenceTest)
-      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${competenceTest}\n To update use \`/jdr update\``);
+      const competenceTest = JSON.stringify(data[invokerId].competences[0]);
+      const skills = data[invokerId].competences;
+      const formatedSkill = formatSkills(skills[0]);
+      console.log("bleh ", competenceTest);
+      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${formatedSkill}\n To update see \`/man jdr updateStat\``);
     }
     else if ((args.length === 1) && (args[0] === "debug")) {
       //console.log("debug, playersJson = ", playersJson);
@@ -46,7 +49,7 @@ module.exports = {
       else msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
     }
     else if ((args.length === 3)) {
-      if (args[0] === "update") {
+      if (args[0] === "updateStat") {
         // UPDATE
         if (isUpdateInputValid(args[1], args[2])) {
           const mainStat = args[1].split(".")[0];
@@ -55,7 +58,7 @@ module.exports = {
           writeJson(JSON.stringify(data));
           msg.author.send(`Updated. Your stats now are: ${formatStats(data[invokerId].stats)}`);
         }
-        else msg.author.send("Input invalid, please see `/man jdr update`");
+        else msg.author.send("Input invalid, please see `/man jdr updateStat`");
       }
     }
     else msg.author.send("To initialize your character sheet, please type `/jdr init yourRpName`");
