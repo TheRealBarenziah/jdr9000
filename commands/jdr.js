@@ -3,7 +3,7 @@ const path = require("path");
 const templateInit = require("../utils/templateInit");
 const playersJson = require("../assets/jsons/players.json");
 const formatStats = require("../utils/format").stats;
-const isUpdateInputValid = require("../utils/isUpdateInputValid")
+const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
 
 module.exports = {

@@ -1,7 +1,9 @@
 # jdr9000  
-A basic Discord RP bot.  
 <p align="center">
   <img width="460" height="460" src="https://i.ibb.co/FYBH6Xf/a-E2ebpp-460s.jpg">
+</p>
+<p align="center">
+  A simple Discord bot
 </p>
 
 ## Features:  
@@ -10,8 +12,8 @@ A basic Discord RP bot.
 -  `/stop` Stop the sound played with `/judgement`  
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
--  `/jdr` Commands useful for roleplay (work in progress; only `/jdr init` currently available)  
--  `/man` to list above commands in Discord  
+-  `/jdr` Commands useful for roleplay  
+-  `/man` to list available commands. Also takes commands as arguments (f.e `/man jdr`)  
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) (terminal)  
