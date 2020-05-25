@@ -26,7 +26,7 @@ module.exports = {
       const skills = data[invokerId].competences;
       const formatedSkill = formatSkills(skills[0]);
       console.log("bleh ", competenceTest);
-      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${formatedSkill}\n To update see \`/man jdr updateStat\``);
+      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${formatedSkill}\n You can update stats with \`/jdr updateStat x.y z\` or skills with \`/jdr updateSkill x y=z\` (learn more by typing \`/man jdr command\`)`);
     }
     else if ((args.length === 1) && (args[0] === "debug")) {
       //console.log("debug, playersJson = ", playersJson);
@@ -44,6 +44,15 @@ module.exports = {
           msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing... Type \`\\jdr stats\` to see your stats or \`\\jdr update\` to update them.`);
           writeJson(jsonContent);
         }
+      }
+      if (args[0] === "createSkill") {
+        msg.author.send("You're in createSkill method, congratz");
+      }
+      if (args[0] === "deleteSkill") {
+        msg.author.send("You're in deleteSkill method, congratz");
+      }
+      if (args[0] === "updateSkill") {
+        msg.author.send("You're in updateSkill method, congratz");
       }
 
       else msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
