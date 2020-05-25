@@ -21,7 +21,9 @@ module.exports = {
       msg.channel.send("O args");
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
-      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\n To update use \`/jdr update\``);
+			const competenceTest = JSON.stringify(data[invokerId].competences[0])
+			console.log("bleh ", competenceTest)
+      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${competenceTest}\n To update use \`/jdr update\``);
     }
     else if ((args.length === 1) && (args[0] === "debug")) {
       //console.log("debug, playersJson = ", playersJson);

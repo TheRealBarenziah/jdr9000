@@ -39,6 +39,12 @@ module.exports = (invokerUsername, rpName) => {
         "pratique": 0
       }
     },
-    "competences": []
+    "competences": [{
+			"name": "Stiletto",
+			"type": "Commune",
+			"level": 8,
+			"exp": 7,
+			"expToLevelUp": 40
+		}]
   };
 };
