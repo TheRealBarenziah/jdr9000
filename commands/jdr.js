@@ -1,28 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+const cuttingEdgeAi = require("../utils/cuttingEdgeAi");
 const templateInit = require("../utils/templateInit");
 const playersJson = require("../assets/jsons/players.json");
 const formatStats = require("../utils/format").stats;
 const formatSkills = require("../utils/format").skills;
 const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
-
-const cuttingEdgeAi = (arg) => {
-  switch (arg) {
-    case "Eihnavé":
-      return "https://media.giphy.com/media/ZdkkWKVmUsZeZwCEIm/giphy.gif";
-    case "JB":
-      return "https://media.giphy.com/media/JR1Gmvk9GQ35Pm4haB/giphy.gif";
-    case "Brasseur":
-      return "https://media.giphy.com/media/dZ2pwAmGZEIHgEGACa/giphy.gif";
-    case "Herumor":
-      return "https://media.giphy.com/media/dBgctuGPXWZ7X7diz7/giphy.gif";
-    case "Clem":
-      return "https://media.giphy.com/media/h81OVbiXolPFBVV3Jt/giphy.gif";
-    default:
-      return "https://placekitten.com/400/400";
-  }
-};
 
 module.exports = {
   name: "jdr",
@@ -33,20 +17,14 @@ module.exports = {
     const invokerUsername = msg.author.username;
     const invokerHashtag = msg.author.discriminator;
 
-
     if (args.length === 0) {
-      // todo: goto man /jdr
-      msg.channel.send("O args");
+      msg.author.send(`${this.description}`);
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
-      const competenceTest = JSON.stringify(data[invokerId].competences[0]);
+      // STATS
       const skills = data[invokerId].competences;
       const formatedSkill = formatSkills(skills[0]);
-      console.log("bleh ", competenceTest);
       msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${formatedSkill}\n You can update stats with \`/jdr updateStat x.y z\` or skills with \`/jdr updateSkill x y=z\` (learn more by typing \`/man jdr command\`)`);
-    }
-    else if ((args.length === 1) && (args[0] === "debug")) {
-      //console.log("debug, playersJson = ", playersJson);
     }
     else if ((args.length === 2)) {
       // INIT
@@ -62,16 +40,8 @@ module.exports = {
           writeJson(jsonContent);
         }
       }
-      else if (args[0] === "createSkill") {
-        msg.author.send("You're in createSkill method, congratz");
-      }
-      else if (args[0] === "deleteSkill") {
-        msg.author.send("You're in deleteSkill method, congratz");
-      }
-      else if (args[0] === "updateSkill") {
-        msg.author.send("You're in updateSkill method, congratz");
-      }
       else if (args[0] === "levelup") {
+        // LEVEL UP
         const validArgs = ["Eihnavé", "Brasseur", "Clem", "Herumor", "JB"];
         if (validArgs.includes(args[1])) {
           msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
@@ -79,7 +49,6 @@ module.exports = {
         }
         else msg.author.send("I need a roleplay name as argument... see /man jdr levelup");
       }
-
       else {
         msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
       }
