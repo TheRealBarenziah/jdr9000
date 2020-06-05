@@ -77,7 +77,7 @@ module.exports = {
           msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
             .catch(e => console.error(e));
         }
-        else msg.channel.send("I need a roleplay name as argument... see /man jdr levelup");
+        else msg.author.send("I need a roleplay name as argument... see /man jdr levelup");
       }
 
       else {
