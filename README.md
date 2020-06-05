@@ -16,17 +16,17 @@
 -  `/man` to list available commands. Also takes commands as arguments (f.e `/man jdr`)  
 
 ## Dependencies:  
-- [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) (terminal)  
-- [FFMPEG](https://www.ffmpeg.org/download.html)  
-- [Node.js](https://nodejs.org/en/download/) >= 12  
+- [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
+- [FFMPEG](https://www.ffmpeg.org/download.html) *(note: must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)*  
+- [Node.js](https://nodejs.org/en/download/) >= 12 *('node -v` to check)*  
 
 ## Launch project:  
 -  First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000.git && cd ./jdr9000`  
 -  Rename `.env.template` into `.env`  
--  Change TOKEN field with your own [API key](https://discord.com/developers/applications) (ex: `TOKEN=yournewapikey`)  
--  First time launch: `npm i && node index.js`  
+-  Change TOKEN field with your own [API key](https://discord.com/developers/applications) *(ex: `TOKEN=yournewapikey`)*  
+-  First time launch: `npm i && node index.js`  *(`npm i` will install local dependencies)*
 -  Stop bot: `Ctrl+C`  
--  Relaunch: `node index.js`  
+-  Launch: `node index.js`  
 
 ##  Credits
 Thanks [Michiel Mulders](https://www.sitepoint.com/discord-bot-node-js/) for his article + repo that helped me get started in no time.
