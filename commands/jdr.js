@@ -7,9 +7,26 @@ const formatSkills = require("../utils/format").skills;
 const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
 
+const cuttingEdgeAi = (arg) => {
+  switch (arg) {
+    case "Einhavé":
+      return "https://media.giphy.com/media/ZdkkWKVmUsZeZwCEIm/giphy.gif";
+    case "JB":
+      return "https://media.giphy.com/media/JR1Gmvk9GQ35Pm4haB/giphy.gif";
+    case "Brasseur":
+      return "https://media.giphy.com/media/dZ2pwAmGZEIHgEGACa/giphy.gif";
+    case "Herumor":
+      return "https://media.giphy.com/media/dBgctuGPXWZ7X7diz7/giphy.gif";
+    case "Clem":
+      return "https://media.giphy.com/media/h81OVbiXolPFBVV3Jt/giphy.gif";
+    default:
+      return "https://placekitten.com/400/400";
+  }
+};
+
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n`/jdr createSkill`\n`/jdr updateSkill`\n`/jdr deleteSkill`\n\nUse `/man jdr command` to learn more about a specific command.",
+  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n`/jdr createSkill`\n`/jdr updateSkill`\n`/jdr deleteSkill`\n`/jdr levelup`\n\nUse `/man jdr command` to learn more about a specific command.",
   execute(msg, args) {
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../assets/jsons/players.json"), { encoding: "utf-8" }));
     const invokerId = msg.author.id;
@@ -45,7 +62,7 @@ module.exports = {
           writeJson(jsonContent);
         }
       }
-      if (args[0] === "createSkill") {
+      else if (args[0] === "createSkill") {
         msg.author.send("You're in createSkill method, congratz");
       }
       else if (args[0] === "deleteSkill") {
@@ -54,8 +71,18 @@ module.exports = {
       else if (args[0] === "updateSkill") {
         msg.author.send("You're in updateSkill method, congratz");
       }
+      else if (args[0] === "levelup") {
+        const validArgs = ["Einhavé", "Brasseur", "Clem", "Herumor", "JB"];
+        if (validArgs.includes(args[1])) {
+          msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
+            .catch(e => console.error(e));
+        }
+        else msg.channel.send("I need a roleplay name as argument... see /man jdr levelup");
+      }
 
-      else msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
+      else {
+        msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
+      }
     }
     else if ((args.length === 3)) {
       if (args[0] === "updateStat") {
