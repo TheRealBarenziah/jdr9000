@@ -7,17 +7,17 @@
 </p>
 
 ## Features:  
+-  `/man` to list available commands. Also takes commands as arguments (f.e `/man jdr`)  
 -  `/omaewa` Post a picture + mention  
 -  `/judgement` Come in channel to play a sound (Currently set to *Judgement Knights Of Thunder*)  
 -  `/stop` Stop the sound played with `/judgement`  
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
 -  `/jdr` Commands useful for roleplay  
--  `/man` to list available commands. Also takes commands as arguments (f.e `/man jdr`)  
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
-- [FFMPEG](https://www.ffmpeg.org/download.html) *(note: must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)*  
+- [FFMPEG](https://www.ffmpeg.org/download.html) *(must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)*  
 - [Node.js](https://nodejs.org/en/download/) >= 12 *('node -v` to check)*  
 
 ## Launch project:  
