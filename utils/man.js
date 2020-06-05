@@ -41,7 +41,7 @@ module.exports = {
         msg.author.send("Get lost :o");
       }
       else if (args[1] === "levelup") {
-        msg.author.send("Displays a GIF depending on argument.\nAvailable arguments: Einhavé, Brasseur, Clem, Herumor, JB.\nExample: `/jdr levelup Einhavé`");
+        msg.author.send("Displays a GIF depending on argument.\nAvailable arguments: Eihnavé, Brasseur, Clem, Herumor, JB.\nExample: `/jdr levelup Eihnavé`");
       }
     }
 

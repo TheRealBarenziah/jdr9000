@@ -9,7 +9,7 @@ const writeJson = require("../utils/writeJson");
 
 const cuttingEdgeAi = (arg) => {
   switch (arg) {
-    case "Einhavé":
+    case "Eihnavé":
       return "https://media.giphy.com/media/ZdkkWKVmUsZeZwCEIm/giphy.gif";
     case "JB":
       return "https://media.giphy.com/media/JR1Gmvk9GQ35Pm4haB/giphy.gif";
@@ -72,7 +72,7 @@ module.exports = {
         msg.author.send("You're in updateSkill method, congratz");
       }
       else if (args[0] === "levelup") {
-        const validArgs = ["Einhavé", "Brasseur", "Clem", "Herumor", "JB"];
+        const validArgs = ["Eihnavé", "Brasseur", "Clem", "Herumor", "JB"];
         if (validArgs.includes(args[1])) {
           msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
             .catch(e => console.error(e));
