@@ -18,7 +18,7 @@
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
 - [FFMPEG](https://www.ffmpeg.org/download.html) *(must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)*  
-- [Node.js](https://nodejs.org/en/download/) >= 12 *('node -v` to check)*  
+- [Node.js](https://nodejs.org/en/download/) >= 12 *(`node -v` to check)*  
 
 ## Launch project:  
 -  First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000.git && cd ./jdr9000`  
