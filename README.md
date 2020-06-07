@@ -30,7 +30,7 @@
 
 ## Todo  
 -  Environmentalize commands returned by man  
--  add timestameped logs  
+-  add timestameped logs (+ author of command)  
 -  check for bot id before letting him try to connect to vocal channel
 
 ##  Credits
