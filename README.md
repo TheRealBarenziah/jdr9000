@@ -28,5 +28,8 @@
 -  Stop bot: `Ctrl+C`  
 -  Launch: `node index.js`  
 
+## Todo  
+-  Environmentalize commands returned by man
+
 ##  Credits
 Thanks [Michiel Mulders](https://www.sitepoint.com/discord-bot-node-js/) for his article + repo that helped me get started in no time.
