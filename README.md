@@ -29,7 +29,9 @@
 -  Launch: `node index.js`  
 
 ## Todo  
--  Environmentalize commands returned by man
+-  Environmentalize commands returned by man  
+-  add timestameped logs  
+-  check for bot id before letting him try to connect to vocal channel
 
 ##  Credits
 Thanks [Michiel Mulders](https://www.sitepoint.com/discord-bot-node-js/) for his article + repo that helped me get started in no time.
