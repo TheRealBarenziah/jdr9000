@@ -15,6 +15,7 @@
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
 -  `/jdr` Commands useful for roleplay  
+-  `/heapdump`  Takes an argument. **! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC**
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
