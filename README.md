@@ -7,6 +7,7 @@
 </p>
 
 ## Features:  
+-  The prefix before each command can be changed in `.env` (default is `/`)  
 -  `/man` to list available commands. Also takes commands as arguments (f.e `/man jdr`)  
 -  `/omaewa` Post a picture + mention  
 -  `/judgement` Come in channel to play a sound (Currently set to *Judgement Knights Of Thunder*)  
@@ -29,7 +30,6 @@
 -  Launch: `node index.js`  
 
 ## Todo  
--  Environmentalize commands returned by man  
 -  add timestameped logs (+ author of command)  
 -  check for bot id before letting him try to connect to vocal channel
 
