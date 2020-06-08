@@ -13,7 +13,7 @@ bot.commands.set(man.name, man);
 bot.commands.set("jdr9000", man);
 
 const TOKEN = process.env.TOKEN;
-const prefix = process.env.prefix;
+const prefix = process.env.PREFIX;
 
 bot.login(TOKEN);
 
@@ -26,7 +26,8 @@ bot.on("message", msg => {
 
   const args = msg.content.slice(prefix.length).split(" ");
   const command = args.shift().toLowerCase();
-  console.info(`Called command: ${command}, args: ${args}`);
+  const now = new Date().toString().split(" (")[0];
+  console.info(`[${now}] ${msg.author.username}#${msg.author.discriminator} called command ${command}, args: ${args}`);
 
   if (!bot.commands.has(command)) return;
 
