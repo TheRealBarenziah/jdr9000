@@ -7,10 +7,11 @@ const formatStats = require("../utils/format").stats;
 const formatSkills = require("../utils/format").skills;
 const isUpdateInputValid = require("../utils/isUpdateInputValid");
 const writeJson = require("../utils/writeJson");
+const prefix = require("../utils/prefix");
 
 module.exports = {
   name: "jdr",
-  description: "A set of commands related to roleplay.\nAvailable commands:\n`/jdr init`\n`/jdr stats`\n`/jdr updateStat`\n`/jdr createSkill`\n`/jdr updateSkill`\n`/jdr deleteSkill`\n`/jdr levelup`\n\nUse `/man jdr command` to learn more about a specific command.",
+  description: `A set of commands related to roleplay.\nAvailable commands:\n\`${prefix}jdr init\`\n\`${prefix}jdr stats\`\n\`${prefix}jdr updateStat\`\n\`${prefix}jdr createSkill\`\n\`${prefix}jdr updateSkill\`\n\`${prefix}jdr deleteSkill\`\n\`${prefix}jdr levelup\`\n\nUse\`${prefix}man jdr command\` to learn more about a specific command.`,
   execute(msg, args) {
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../assets/jsons/players.json"), { encoding: "utf-8" }));
     const invokerId = msg.author.id;
@@ -18,25 +19,25 @@ module.exports = {
     const invokerHashtag = msg.author.discriminator;
 
     if (args.length === 0) {
-      msg.author.send(`${this.description}`);
+      msg.author.send(`${this.description} `);
     }
     else if ((args.length === 1) && (args[0] === "stats")) {
       // STATS
       const skills = data[invokerId].competences;
       const formatedSkill = formatSkills(skills[0]);
-      msg.author.send(`Your stats :\n ${formatStats(data[invokerId].stats)}\nYour skills:\n ${formatedSkill}\n You can update stats with \`/jdr updateStat x.y z\` or skills with \`/jdr updateSkill x y=z\` (learn more by typing \`/man jdr command\`)`);
+      msg.author.send(`Your stats: \n ${formatStats(data[invokerId].stats)} \nYour skills: \n ${formatedSkill} \n You can update stats with \`${prefix}jdr updateStat x.y z\` or skills with \`${prefix}jdr updateSkill x y=z\` (learn more by typing \`${prefix}man jdr command\`)`);
     }
     else if ((args.length === 2)) {
       // INIT
       if (args[0] === "init") {
         const isInvokerInJson = typeof data[invokerId] !== "undefined";
         if (isInvokerInJson) {
-          msg.author.send(`You (${invokerUsername}#${invokerHashtag}) had initialized your stats already, those are:\n ${JSON.stringify(playersJson[invokerId])}.\n To update use \`/jdr update\``);
+          msg.author.send(`You (${invokerUsername}#${invokerHashtag}) had initialized your stats already, those are:\n ${JSON.stringify(playersJson[invokerId])}.\n To update use \`${prefix}jdr update\``);
         }
         else {
           const init = templateInit(invokerUsername, args[1]);
           const jsonContent = JSON.stringify({ ...playersJson, [invokerId]: init });
-          msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing... Type \`\\jdr stats\` to see your stats or \`\\jdr update\` to update them.`);
+          msg.author.send(`You (${invokerUsername}) had not initialized your stats yet, initializing... Type \`${prefix}jdr stats\` to see your stats or \`${prefix}jdr update\` to update them.`);
           writeJson(jsonContent);
         }
       }
