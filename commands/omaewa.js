@@ -4,12 +4,14 @@ module.exports = {
   execute(msg, args) {
     if (args.length === 0) {
       msg.channel.send("Omae wa wo shindeiru !", { files: ["https://i.imgflip.com/2kpfci.jpg"] })
-        .then(() => msg.reply("Nani ???"));
+        .then(() => msg.reply("Nani ???"))
+        .catch(e => console.error(e));
     }
     else if ((args.length === 1)) {
       if (msg.mentions.users.map(u => u.username).length > 0) {
         msg.channel.send("Omae wa wo shindeiru !", { files: ["https://i.imgflip.com/2kpfci.jpg"] })
-          .then(() => msg.channel.send(`${args[0]} Nani ???`)).catch(e => console.error(e));
+          .then(() => msg.channel.send(`${args[0]} Nani ???`))
+          .catch(e => console.error(e));
       }
     }
     else msg.channel.send("I dont take that kind of arguments, only mentions...");

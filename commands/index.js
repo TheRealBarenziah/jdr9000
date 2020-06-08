@@ -4,5 +4,6 @@ module.exports = {
   judgement: require("./judgement"),
   stop: require("./stop"),
   gandalf: require("./gandalf"),
-  jdr: require("./jdr")
+  jdr: require("./jdr"),
+  snap: require("./snap")
 };

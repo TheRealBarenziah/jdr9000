@@ -16,7 +16,7 @@ module.exports = {
             voiceChannel.leave();
           });
         })
-        .catch(err => console.log(err));
+        .catch(e => console.error(e));
     }
   },
 };

@@ -5,7 +5,7 @@
   "author": "TheRealBarenziah",
   "main": "index.js",
   "scripts": {
-		"start": "node index.js",
+    "start": "node index.js",
     "develop": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint --color . --ext .js,.jsx",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "eslint": "^7.1.0",
+    "heapdump": "^0.3.15",
     "nodemon": "^2.0.4"
   }
 }

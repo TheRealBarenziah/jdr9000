@@ -28,10 +28,10 @@
 -  First time launch: `npm i && node index.js`  *(`npm i` will install local dependencies)*
 -  Stop bot: `Ctrl+C`  
 -  Launch: `node index.js`  
+-  *(facultative): Create a Discord server and invite your bot there (Discord dev website > Oauth section. Then tick "bot" and select appropriate permissions to get the invite link)*
 
 ## Todo  
--  add timestameped logs (+ author of command)  
 -  check for bot id before letting him try to connect to vocal channel
 
-##  Credits
+##  Credits  
 Thanks [Michiel Mulders](https://www.sitepoint.com/discord-bot-node-js/) for his article + repo that helped me get started in no time.
