@@ -11,5 +11,9 @@ module.exports = {
         console.log(`Dump written to ${fileName}`);
       });
     }
+    else if ((args.length === 1) && (args[0] === "gc")) {
+      console.log("Proc garbage collector");
+      global.gc();
+    }
   }
 };
