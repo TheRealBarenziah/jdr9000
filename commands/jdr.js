@@ -48,10 +48,10 @@ module.exports = {
           msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
             .catch(e => console.error(e));
         }
-        else msg.author.send("I need a roleplay name as argument... see /man jdr levelup");
+        else msg.author.send(`I need a roleplay name as argument... see ${prefix}man jdr levelup`);
       }
       else {
-        msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`/jdr init yourRpName\`. Too see more commands, type \`/man jdr\``);
+        msg.author.send(`Invalid arg : ${args[0]}. To initialize your character sheet, please type \`${prefix}jdr init yourRpName\`. Too see more commands, type \`${prefix}man jdr\``);
       }
     }
     else if ((args.length === 3)) {
@@ -64,9 +64,9 @@ module.exports = {
           writeJson(JSON.stringify(data));
           msg.author.send(`Updated. Your stats now are: ${formatStats(data[invokerId].stats)}`);
         }
-        else msg.author.send("Input invalid, please see `/man jdr updateStat`");
+        else msg.author.send(`Input invalid, please see  \`${prefix}man jdr updateStat\``);
       }
     }
-    else msg.author.send("To initialize your character sheet, please type `/jdr init yourRpName`");
+    else msg.author.send(`To initialize your character sheet, please type  \`${prefix}jdr init\``);
   },
 };
