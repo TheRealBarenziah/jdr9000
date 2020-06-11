@@ -22,7 +22,7 @@ spec:
         args: ["--expose-gc", "index.js"]
         env:
         - name: PREFIX
-          value: "!"
+          value: '!'
         - name: ODE_DEBUG
           value: cluster,net,http,fs,tls,module,timers
         - name: NODE_ENV
