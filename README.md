@@ -30,9 +30,18 @@ First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000
 -  First time launch: `npm i && node index.js`  *(`npm i` will install local dependencies)*
 -  Stop bot: `Ctrl+C`  
 -  Launch: `node index.js`
-### Using docker:
--  In the root directory, use `docker image build -t jdr9000:vX -f docker/Dockerfile .` to build the image.
--  Use `docker container run -tid -e TOKEN=YourToken -e PREFIX=YourPrefix --name jdr-vX --restart=always jdr9000:vX node --expose-gc index.js` to launch the container from the image.
+### Using Docker:
+-  In the root directory, use `docker image build -t jdr9000:v2 -f docker/Dockerfile .` to build the image.
+-  Use `docker container run -tid -e TOKEN=YourToken -e PREFIX=YourPrefix --name jdr-v2 --restart=always jdr9000:v2 node --expose-gc index.js` to launch the container from the image.
+### Using Kubernetes:
+You will find the deployement manifest here `kube/deploy_jdrbot.yaml`
+Use `kubectl apply -f kube/deploy_jdrbot.yaml` from the root directory of this repo to deploy the manifest on the kubernetes described in your kubeconfig file.
+As you can see, this deployement is using a secret object containing your access Token
+Create the secret using this command `kubectl create secret generic discord-api-token --from-literal TOKEN="YourToken"`
+In the manifest, feel free to change, remove or add env vars and values.
+You also can modify to your needs the args for the `node` command.
+This deployement do not use hosted docker images, you have to build it with the dockerfile as seen previously.
+Obviously, you will use the same name in the manifest as the name you used to build the image.
 ### facultative: 
 Create a Discord server and invite your bot there (Discord dev website > Oauth section. Then tick "bot" and select appropriate permissions to get the invite link) [see the documentation](https://discordpy.readthedocs.io/en/latest/discord.html#inviting-your-bot)
 
