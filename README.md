@@ -35,7 +35,7 @@ First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000
 -  Use `docker container run -tid -e TOKEN=YourToken -e PREFIX=YourPrefix --name jdr-v2 --restart=always jdr9000:v2 node --expose-gc index.js` to launch the container from the image.
 ### Using Kubernetes:
 -  You will find the deployement manifest here `kube/deploy_jdrbot.yaml`
--  Use `kubectl apply -f kube/deploy_jdrbot.yaml` from the root directory of this repo to deploy the manifest on the kubernetes described in your kubeconfig file.
+-  Use `kubectl apply -f kube/deploy_jdrbot.yaml` from the root directory of this repo to deploy the manifest on the kubernetes cluster described in your kubeconfig.
 -  As you can see, this deployement is using a secret object containing your access Token
 -  Create the secret using this command `kubectl create secret generic discord-api-token --from-literal TOKEN="YourToken"`
 -  In the manifest, feel free to change, remove or add env vars and values.
