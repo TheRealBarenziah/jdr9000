@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jdr
+  labels:
+    app: jdr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jdr
+  template:
+    metadata:
+      labels:
+        app: jdr
+    spec:
+      containers:
+      - name: jdr
+        image: jdr9000:v2
+        command: ["node"]
+        #args: ["--expose-gc", "--trace_gc", "index.js"]
+        args: ["--expose-gc", "index.js"]
+        env:
+        - name: PREFIX
+          value: '!'
+        - name: ODE_DEBUG
+          value: cluster,net,http,fs,tls,module,timers
+        - name: NODE_ENV
+          value: development
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: discord-api-token
+              key: TOKEN
