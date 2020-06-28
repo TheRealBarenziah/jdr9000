@@ -15,7 +15,7 @@
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
 -  `/jdr` Commands useful for roleplay  
--  `/heapdump`  Takes an argument. **! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC**
+-  `/heapdump`  Takes an argument. **! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC. This feature is for development only: if your bot is available to other people, make sure to run `NODE_ENV=production node index.js` so that feature is disabled.**
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
@@ -29,7 +29,7 @@ First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000
 -  Change TOKEN field with your own [API key](https://discord.com/developers/applications) *(ex: `TOKEN=yournewapikey`)*  
 -  First time launch: `npm i && node index.js`  *(`npm i` will install local dependencies)*
 -  Stop bot: `Ctrl+C`  
--  Launch: `node index.js`
+-  Launch in development mode (`node --expose-gc index.js`) or in production mode (`NODE_ENV=production node index.js`)  
 ### Using Docker:
 -  In the root directory, use `docker image build -t jdr9000:v2 -f docker/Dockerfile .` to build the image.
 -  Use `docker container run -tid -e TOKEN=YourToken -e PREFIX=YourPrefix --name jdr-v2 --restart=always jdr9000:v2 node --expose-gc index.js` to launch the container from the image.

@@ -1,19 +1,22 @@
 const heapdump = require("heapdump");
+const path = require("path");
 
 module.exports = {
   name: "heapdump",
-  description: "01000110 01010101",
+  description: "Only works if `NODE_ENV=DEVELOPMENT`. Pass `!` as argument to write a heapsnapshot into the ./dumps folder. Pass `gc` as argument to manually call the garbage collector (only works if ",
   execute(msg, args) {
-    if ((args.length === 1) && (args[0] === "!")) {
-      heapdump.writeSnapshot(`/home/snotrq/Code/jdr9000/dumps/${Date.now()}.heapsnapshot`);
-      heapdump.writeSnapshot((e, fileName) =>{
-        if(e) console.error(e);
-        console.log(`Dump written to ${fileName}`);
-      });
-    }
-    else if ((args.length === 1) && (args[0] === "gc")) {
-      console.log("Proc garbage collector");
-      global.gc();
+    if(process.env.NODE_ENV === "development"){
+
+      if ((args.length === 1) && (args[0] === "!")) {
+        heapdump.writeSnapshot(path.join(__dirname, `../dumps/${Date.now()}.heapsnapshot`));
+      }
+      else if ((args.length === 1) && (args[0] === "gc")) {
+        console.log("Proc garbage collector");
+        global.gc();
+      }
+      else if ((args.length === 1) && (args[0] === "env")) {
+        msg.author.send(`My environment is currently set to '${process.env.NODE_ENV}'`);
+      }
     }
   }
 };
