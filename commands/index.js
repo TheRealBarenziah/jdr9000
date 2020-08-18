@@ -6,4 +6,5 @@ module.exports = {
   gandalf: require("./gandalf"),
   jdr: require("./jdr"),
   heapdump: require("./snap")
+  g: require("./gifs")
 };
