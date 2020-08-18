@@ -1,11 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const cuttingEdgeAi = require("../utils/cuttingEdgeAi");
 const prefix = require("../utils/prefix");
 
 module.exports = {
   name: "gif",
-  description: `Display some gifs .\nAvailable commands:\n\`${prefix}g ah``,
+  description: `Display some gifs .\nAvailable commands:\n\`${prefix}g ah`,
   execute(msg, args) {
     const invokerId = msg.author.id;
     const invokerUsername = msg.author.username;
