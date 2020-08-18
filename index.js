@@ -22,7 +22,7 @@ bot.on("ready", () => {
 });
 
 bot.on("message", msg => {
-  console.log("ohaio msg.author.bot", msg.author.bot);
+  // console.log("ohaio msg.author.bot", msg.author.bot);
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
   const args = msg.content.slice(prefix.length).split(" ");
