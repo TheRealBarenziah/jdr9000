@@ -5,7 +5,7 @@ const prefix = require("../utils/prefix");
 
 module.exports = {
   name: "g",
-  description: `Display some gifs .\nAvailable commands:\n\`${prefix}g ah` 
+  description: `Display some gifs .\nAvailable commands:\n\`${prefix}g ah`, 
   execute(msg, args) {
     const invokerId = msg.author.id;
     const invokerUsername = msg.author.username;
@@ -13,9 +13,11 @@ module.exports = {
 
     if (args.length === 0) {
       msg.author.send(`${this.description} `);
+    }
     else if (args[0] === "ah") {
-      channel.send(file="https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif")
-      //msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
+      msg.channel.send(file="https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif")
+    }  
+//msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
             //.catch(e => console.error(e));
-
+}}
 
