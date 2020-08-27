@@ -13,7 +13,7 @@ bot.commands.set(man.name, man);
 bot.commands.set("jdr9000", man);
 
 const TOKEN = process.env.TOKEN;
-const prefix = process.env.PREFIX;
+const prefix = process.env.PREFIX ? process.env.PREFIX : "/";
 
 bot.login(TOKEN);
 
@@ -22,7 +22,7 @@ bot.on("ready", () => {
 });
 
 bot.on("message", msg => {
-  console.log("ohaio msg.author.bot", msg.author.bot);
+  // console.log("ohaio msg.author.bot", msg.author.bot);
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
   const args = msg.content.slice(prefix.length).split(" ");

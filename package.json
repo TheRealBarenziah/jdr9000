@@ -33,7 +33,9 @@
     "fs": "0.0.1-security",
     "node-opus": "^0.3.3",
     "path": "^0.12.7",
-    "utf-8-validate": "^5.0.2"
+    "simple-youtube-api": "^5.2.1",
+    "utf-8-validate": "^5.0.2",
+    "ytdl-core": "^3.2.2"
   },
   "devDependencies": {
     "eslint": "^7.1.0",
