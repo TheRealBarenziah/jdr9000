@@ -12,5 +12,6 @@ module.exports = {
       [object.name]: `Current level: ${object.type === "Commune" ? object.level + "/10" : object.level}. Current experience: ${object.exp}/${object.expToLevelUp}`
     };
     return `\`\`\`json\n${JSON.stringify(newObject)}\`\`\``;
-  }
+  },
+  clfu: (object) => `\`\`\`json\n${JSON.stringify(object)}\`\`\``
 };

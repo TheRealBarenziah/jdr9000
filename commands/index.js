@@ -5,6 +5,7 @@ module.exports = {
   stop: require("./stop"),
   gandalf: require("./gandalf"),
   jdr: require("./jdr"),
-  youtube: require("./youtube"),
-  heapdump: require("./snap")
+  heapdump: require("./snap"),
+  gif: require("./gif"),
+  clfu: require("./clfu")
 };
