@@ -1,5 +1,6 @@
 const clfu = require("commandlinefu");
-const format = require("../utils/format").clfu;
+const formatObject = require("../utils/format").clfuObject;
+const formatArray = require("../utils/format").clfuArray;
 
 module.exports = {
   name: "clfu",
@@ -11,18 +12,20 @@ module.exports = {
     else if ((args.length === 1)) {
       if (args[0] === "random") {
         await clfu().then(res => {
-          msg.channel.send(format(res));
+          msg.channel.send(formatObject(res));
         });
       }
       else if (args[0] === "popular") {
         await clfu("popular").then(res => {
-          msg.channel.send(format(res.slice(0, 4)));
+          msg.channel.send(formatArray(res));
         });
       }
       else if (args[0].includes("search:")) {
         const input = args[0].split("search:")[1];
         await clfu(`search:${input}`).then(res => {
-          msg.channel.send(format(res.slice(0, 4)));
+          const output = formatArray(res);
+          console.log("output len ? ", output.length);
+          msg.channel.send(formatArray(res));
         });
       }
     }
