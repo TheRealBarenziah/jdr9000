@@ -15,7 +15,9 @@
 -  `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`  
 -  `/gandalf` Post a gif + text and play Gandalf sound  
 -  `/jdr` Commands useful for roleplay  
--  `/heapdump`  Takes an argument. **! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC. This feature is for development only: if your bot is available to other people, make sure to run `NODE_ENV=production node index.js` so that feature is disabled.**
+-  `/gif` Post a gif depending on the argument. Currently accepted arg: `ah`  
+-  `/clfu` Post snippets from [commandlinefu.com](https://www.commandlinefu.com/). See man for args. Pass `--public` as second arg to make the bot answer on current channel instead of PM'ing the author.  
+-  `/heapdump`  Takes an argument. **! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC. This feature is for development only: if your bot is available to other people, please care to run `NODE_ENV=production node index.js` to ensure that feature is disabled.**
 
 ## Dependencies:  
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) *(terminal)*  
