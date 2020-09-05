@@ -10,7 +10,7 @@ Object.keys(botCommands).map(key => {
 });
 
 bot.commands.set(man.name, man);
-bot.commands.set("jdr9000", man);
+bot.commands.set(process.env.BOT_NAME ? process.env.BOT_NAME : "jdr9000", man);
 
 const TOKEN = process.env.TOKEN;
 const prefix = process.env.PREFIX ? process.env.PREFIX : "/";
