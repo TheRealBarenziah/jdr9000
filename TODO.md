@@ -17,3 +17,6 @@ Emitted 'error' event on VoiceConnection instance at:
     at processTimers (internal/timers.js:492:7)
 
 ```
+
+____
+Dynamic bot name : https://stackoverflow.com/a/47027115/11894221
