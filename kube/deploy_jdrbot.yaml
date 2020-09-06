@@ -16,11 +16,13 @@ spec:
     spec:
       containers:
       - name: jdr
-        image: jdr9000:v2
+        image: jdr9000:v5
         command: ["node"]
         #args: ["--expose-gc", "--trace_gc", "index.js"]
         args: ["--expose-gc", "index.js"]
         env:
+        - name: BOT_NAME
+          value: Bronsoir_oui
         - name: PREFIX
           value: '!'
         - name: ODE_DEBUG
