@@ -8,7 +8,7 @@ module.exports = {
     if(process.env.NODE_ENV === "development"){
 
       if ((args.length === 1) && (args[0] === "!")) {
-        heapdump.writeSnapshot(path.join(__dirname, `../dumps/${Date.now()}.heapsnapshot`));
+        heapdump.writeSnapshot(path.join(__dirname, `../heapdumps/${Date.now()}.heapsnapshot`));
       }
       else if ((args.length === 1) && (args[0] === "gc")) {
         console.log("Proc garbage collector");
