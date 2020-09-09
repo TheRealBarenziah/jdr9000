@@ -20,17 +20,26 @@ spec:
         command: ["node"]
         #args: ["--expose-gc", "--trace_gc", "index.js"]
         args: ["--expose-gc", "index.js"]
+        volumeMounts:
+          - name: jdrbot-volume
+            mountPath: /app/heapdumps
+          - name: jdrbot-volume
+            mountPath: /app/assets/jsons
         env:
-        - name: BOT_NAME
-          value: Bronsoir_oui
-        - name: PREFIX
-          value: '!'
-        - name: ODE_DEBUG
-          value: cluster,net,http,fs,tls,module,timers
-        - name: NODE_ENV
-          value: development
-        - name: TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: discord-api-token
-              key: TOKEN
+          - name: BOT_NAME
+            value: Bronsoir_oui
+          - name: PREFIX
+            value: '!'
+          - name: ODE_DEBUG
+            value: cluster,net,http,fs,tls,module,timers
+          - name: NODE_ENV
+            value: development
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: discord-api-token
+                key: TOKEN
+      volumes:
+        - name: jdrbot-volume
+          persistentVolumeClaim:
+            claimName: jdrbot-data
