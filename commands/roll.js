@@ -18,12 +18,11 @@ module.exports = {
       return null;
     }
     else {
+      let diceQty = parsedArg[0];
       if (parsedArg[1].includes("<") || parsedArg[1].includes(">")) {
         const operand = parsedArg[1].includes("<") ? "<" : ">";
-        let diceQty = parsedArg[0];
-        let diceSize = parsedArg[1].split(operand)[0];
+        const diceSize = parsedArg[1].split(operand)[0];
         const operandArg = Number(parsedArg[1].split(operand)[1]);
-
         if ((Number(diceQty) <= 100) && (Number(diceSize) <= 1000)) {
           const results = [];
           let failedDices = [];
@@ -31,20 +30,23 @@ module.exports = {
           for (let i = 0; i < diceQty; i++) {
             results.push(roll(diceSize));
           }
-          const sortedResults = results.sort((a, b) => a - b)
+          const sortedResults = results.sort((a, b) => a - b);
           if (operand === "<") { // inferior case
-            failedDices = sortedResults.filter(dice => Number(dice) >= operandArg)
-            succeededDices = sortedResults.filter(dice => Number(dice) < operandArg)
+            failedDices = sortedResults.filter(dice => Number(dice) >= operandArg);
+            succeededDices = sortedResults.filter(dice => Number(dice) < operandArg);
           }
           else if (operand === ">") { // superior case
-            failedDices = sortedResults.filter(dice => Number(dice) <= operandArg)
-            succeededDices = sortedResults.filter(dice => Number(dice) > operandArg)
+            failedDices = sortedResults.filter(dice => Number(dice) <= operandArg);
+            succeededDices = sortedResults.filter(dice => Number(dice) > operandArg);
           }
           msg.reply(" rolling " + diceQty + "d" + diceSize + `${operand}${operandArg}` + ":\n" + formatDices(succeededDices, failedDices));
         }
-        else if ((isNumeric(diceQty)) && (isNumeric(diceSize))) {
-          let diceQty = parsedArg[0];
-          let diceSize = parsedArg[1];
+      }
+      else {
+        const diceSize = parsedArg[1];
+
+        if ((isNumeric(diceQty)) && (isNumeric(diceSize))) {
+          const diceQty = parsedArg[0];
           if ((Number(diceQty) <= 100) && (Number(diceSize) <= 1000)) {
             // lets be safe with user input Q_Q..
 
@@ -52,7 +54,7 @@ module.exports = {
             for (let i = 0; i < diceQty; i++) {
               results.push(roll(diceSize));
             }
-            const sortedResults = results.sort((a, b) => a - b)
+            const sortedResults = results.sort((a, b) => a - b);
             const sum = results.reduce((a, b) => a + b, 0);
 
             msg.reply(" rolling " + diceQty + "d" + diceSize + ":\n" + colorizeText.orange(sortedResults.toString() + `\nTotal: ${sum} `));
@@ -67,7 +69,8 @@ module.exports = {
           return null;
         }
       }
-      return null;
     }
+    return null;
   }
-}
+};
+
