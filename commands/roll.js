@@ -40,7 +40,7 @@ module.exports = {
             failedDices = sortedResults.filter(dice => Number(dice) <= operandArg)
             succeededDices = sortedResults.filter(dice => Number(dice) > operandArg)
           }
-          msg.reply(formatDices(succeededDices, failedDices));
+          msg.reply(" rolling " + diceQty + "d" + diceSize + ":\n" + formatDices(succeededDices, failedDices));
         }
         else if ((isNumeric(diceQty)) && (isNumeric(diceSize))) {
           let diceQty = parsedArg[0];
