@@ -6,7 +6,7 @@ const formatDices = require("../utils/format").dices;
 
 module.exports = {
   name: "roll",
-  description: `Takes an argument \`${prefix}roll XdY\` where X is the number of dices you want, & Y the number of faces for the dices.`,
+  description: `Takes an argument \`${prefix}roll XdY\` where X is the number of dices you want, & Y the number of faces for the dices.\nYou can also pass a criteria to filter your results, f.e \`${prefix}roll 3d100>20\``,
   execute(msg, args) {
     if (args.length === 1 && (Number(args[0]) <= 100 && Number(args[0]) >= 0)) {
       msg.reply(` rolling 1d${args[0]} :\n` + colorizeText.orange(roll(args[0]).toString()));
