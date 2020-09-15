@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = {
   name: "gif",
   description: `Display some gifs. Some gifs may or may not come with extra fancy features.\nAvailable commands:\n\`${prefix}gif ah`,
-  
+
   execute(msg, args) {
     if (args.length === 0) {
       msg.author.send(`${this.description} `);

@@ -36,6 +36,7 @@
     "path": "^0.12.7",
     "simple-youtube-api": "^5.2.1",
     "utf-8-validate": "^5.0.2",
+    "uwufy": "^1.0.6",
     "ytdl-core": "^3.2.2"
   },
   "devDependencies": {
