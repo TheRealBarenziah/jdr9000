@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jdr
-        image: jdr9000:v5
+        image: jdr9000:v6
         command: ["node"]
         #args: ["--expose-gc", "--trace_gc", "index.js"]
         args: ["--expose-gc", "index.js"]
