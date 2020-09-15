@@ -43,7 +43,7 @@ module.exports = {
       }
       else if (args[0] === "levelup") {
         // LEVEL UP
-        const validArgs = ["Eihnavé", "Brasseur", "Clem", "Herumor", "JB"];
+        const validArgs = ["Eihnavé", "Brasseur", "Clem", "Herumor", "JB", "Cyfira", "Siphira", "Sifira"];
         if (validArgs.includes(args[1])) {
           msg.channel.send(`Level up! Congratulations ${args[1]}! `, { files: [`${cuttingEdgeAi(args[1])}`] })
             .catch(e => console.error(e));
