@@ -60,7 +60,7 @@ module.exports = {
           });
       }
     }
-    else if ((args.length === 2) && (args[1] === "--public")) {
+    else if ((args.length === 2) && ((args[1] === "--public") || (args[1] === "-p"))) {
       // public mode
       if (args[0] === "random") {
         await clfu()

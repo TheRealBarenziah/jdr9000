@@ -10,6 +10,12 @@ module.exports = (arg) => {
     return "https://media.giphy.com/media/dBgctuGPXWZ7X7diz7/giphy.gif";
   case "Clem":
     return "https://media.giphy.com/media/h81OVbiXolPFBVV3Jt/giphy.gif";
+  case "Siphira":
+    return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
+  case "Cyfira":
+    return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
+  case "Sifira":
+    return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
   default:
     return "https://placekitten.com/400/400";
   }
