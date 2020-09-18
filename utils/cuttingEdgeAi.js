@@ -16,6 +16,9 @@ module.exports = (arg) => {
     return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
   case "Sifira":
     return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
+  case "Sénèque":
+    return "https://i2.wp.com/saluto.fr/wp-content/uploads/2020/04/la_vie_est_une_piece_de_theatre.jpg";
+
   default:
     return "https://placekitten.com/400/400";
   }
