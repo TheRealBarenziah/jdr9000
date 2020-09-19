@@ -29,14 +29,15 @@ module.exports = {
       }
     }
     else {
-      giphy.search({
-          q: 'pokemon',
-          limit: 1
+      giphy.random({
+	  tag: args[0],
+	  rating: 'r',
+	  fmt: 'json'
       }, function (err, res) {
          if(err) console.error(err);
 	 console.log(res);
+	 msg.channel.send(file = res.data.url);
     });
-//    catch(err => console.error(err));
     }
   }
 };
