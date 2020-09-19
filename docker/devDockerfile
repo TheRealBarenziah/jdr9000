@@ -1,0 +1,19 @@
+FROM node:14.4
+
+RUN apt-get update && \ 
+    apt-get install -y apt-utils && \
+    apt-get upgrade -y
+
+RUN apt-get install -y --no-install-recommends \
+    	wget \
+        curl \
+        git \
+        ffmpeg \
+	vim nmap dnsutils telnet netcat net-tools
+	
+
+RUN mkdir /app
+WORKDIR /app
+COPY ./ ./
+
+CMD bash
