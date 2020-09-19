@@ -36,7 +36,8 @@ module.exports = {
       }, function (err, res) {
          if(err) console.error(err);
 	 console.log(res);
-	 msg.channel.send(file = res.data.url);
+	 if(res.data.url) msg.channel.send(file = res.data.url);
+	 else msg.reply("fokoff modafoka i didnt find ur shit!");
     });
     }
   }
