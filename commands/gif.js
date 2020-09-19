@@ -33,7 +33,8 @@ module.exports = {
           q: 'pokemon',
           limit: 1
       }, function (err, res) {
-         console.log(res);
+         if(err) console.error(err);
+	 console.log(res);
     });
 //    catch(err => console.error(err));
     }
