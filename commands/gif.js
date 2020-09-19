@@ -1,7 +1,8 @@
 const prefix = require("../utils/prefix");
 const soundsDir = require("../assets/sounds/soundsDir");
 const path = require("path");
-
+const GIPHYTOKEN = process.env.GIPHYTOKEN;
+const giphy = require('giphy-api')(GIPHYTOKEN);
 module.exports = {
   name: "gif",
   description: `Display some gifs. Some gifs may or may not come with extra fancy features.\nAvailable commands:\n\`${prefix}gif ah`,
@@ -26,6 +27,15 @@ module.exports = {
       else {
         msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
       }
+    }
+    else {
+      giphy.search({
+          q: 'pokemon',
+          limit: 1
+      }, function (err, res) {
+         console.log(res);
+    });
+//    catch(err => console.error(err));
     }
   }
 };
