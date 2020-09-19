@@ -1,8 +1,10 @@
 const prefix = require("../utils/prefix");
 const soundsDir = require("../assets/sounds/soundsDir");
 const path = require("path");
-const GIPHYTOKEN = process.env.GIPHYTOKEN;
-const giphy = require('giphy-api')(GIPHYTOKEN);
+const GIPHYTOKEN = process.env.GIPHY_API_KEY;
+const giphy = require("giphy-api")(GIPHYTOKEN);
+const roll = require("../utils/roll");
+
 module.exports = {
   name: "gif",
   description: `Display some gifs. Some gifs may or may not come with extra fancy features.\nAvailable commands:\n\`${prefix}gif ah`,
@@ -28,17 +30,29 @@ module.exports = {
         msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
       }
     }
+
     else {
-      giphy.random({
-	  tag: args[0],
-	  rating: 'r',
-	  fmt: 'json'
+
+      const querystring = args.join().replace(/,/g, " ");
+      // console.log("querystring : ", querystring);
+
+      giphy.search({
+        q: querystring,
+        rating: "r"/*,
+        fmt: "json"*/
       }, function (err, res) {
-         if(err) console.error(err);
-	 console.log(res);
-	 if(res.data.url) msg.channel.send(file = res.data.url);
-	 else msg.reply("fokoff modafoka i didnt find ur shit!");
-    });
+        // console.log("res", res);
+        if (err) console.error(err);
+        // console.log(res.data);
+        if(res.data.length > 5){
+          const randomized = roll(res.data.length);
+          msg.channel.send(file = res.data[randomized].url);
+        }
+        else if (res.data[0].url) {
+          msg.channel.send(file = res.data[0].url);
+        }
+        else msg.reply("fokoff modafoka i didnt find ur shit!");
+      });
     }
   }
 };
