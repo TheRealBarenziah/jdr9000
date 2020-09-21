@@ -7,9 +7,13 @@ module.exports = (arg) => {
   case "Brasseur":
     return "https://media.giphy.com/media/dZ2pwAmGZEIHgEGACa/giphy.gif";
   case "Herumor":
+    return "https://tenor.com/bpLbf.gif";
+  case "hérumor":
     return "https://media.giphy.com/media/dBgctuGPXWZ7X7diz7/giphy.gif";
   case "Clem":
     return "https://media.giphy.com/media/h81OVbiXolPFBVV3Jt/giphy.gif";
+  case "Poneyrider":
+    return "https://media.giphy.com/media/ZPKA8hg390ZP2/giphy.gif";
   case "Siphira":
     return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
   case "Cyfira":
@@ -18,7 +22,10 @@ module.exports = (arg) => {
     return "https://media.giphy.com/media/3orif11wPHwyScjG5W/giphy.gif";
   case "Sénèque":
     return "https://i2.wp.com/saluto.fr/wp-content/uploads/2020/04/la_vie_est_une_piece_de_theatre.jpg";
-
+  case "Epictète": 
+    return "https://tse2.mm.bing.net/th?id=OIP.bBqK5VrPvKYsdYM06STt9wAAAA";
+  case "Marc-Aurèle":
+    return "https://citation-celebre.leparisien.fr/images/citation/citation-marc-aurele-52657.png";
   default:
     return "https://placekitten.com/400/400";
   }
