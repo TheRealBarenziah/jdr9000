@@ -38,7 +38,8 @@ module.exports = {
 
       giphy.search({
         q: querystring,
-        rating: "r"/*,
+        rating: "r",
+        limit: 8/*,
         fmt: "json"*/
       }, function (err, res) {
         // console.log("res", res);
