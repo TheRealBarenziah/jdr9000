@@ -1,6 +1,9 @@
 const prefix = require("../utils/prefix");
 const soundsDir = require("../assets/sounds/soundsDir");
 const path = require("path");
+const GIPHYTOKEN = process.env.GIPHY_API_KEY;
+const giphy = require("giphy-api")(GIPHYTOKEN);
+const roll = require("../utils/roll");
 
 module.exports = {
   name: "gif",
@@ -26,6 +29,31 @@ module.exports = {
       else {
         msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
       }
+    }
+
+    else {
+
+      const querystring = args.join().replace(/,/g, " ");
+      // console.log("querystring : ", querystring);
+
+      giphy.search({
+        q: querystring,
+        rating: "r",
+        limit: 8/*,
+        fmt: "json"*/
+      }, function (err, res) {
+        // console.log("res", res);
+        if (err) console.error(err);
+        // console.log(res.data);
+        if(res.data.length > 5){
+          const randomized = roll(res.data.length);
+          msg.channel.send(file = res.data[randomized].url);
+        }
+        else if (res.data[0].url) {
+          msg.channel.send(file = res.data[0].url);
+        }
+        else msg.reply("fokoff modafoka i didnt find ur shit!");
+      });
     }
   }
 };
