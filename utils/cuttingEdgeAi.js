@@ -27,6 +27,6 @@ module.exports = (arg) => {
   case "Marc-Aurèle":
     return "https://citation-celebre.leparisien.fr/images/citation/citation-marc-aurele-52657.png";
   default:
-    return "https://placekitten.com/400/400";
+    return "https://i.pinimg.com/736x/f4/2d/3f/f42d3febd8e7634ca3bb9131afaccc73.jpg";
   }
 };
