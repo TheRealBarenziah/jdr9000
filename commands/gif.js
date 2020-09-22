@@ -45,14 +45,16 @@ module.exports = {
         // console.log("res", res);
         if (err) console.error(err);
         // console.log(res.data);
-        if(res.data.length > 5){
-          const randomized = roll(res.data.length);
-          msg.channel.send(file = res.data[randomized].url);
+        if(res && res.data){
+          if(res.data.length > 5){
+            const randomized = roll(res.data.length) - 1;
+            msg.channel.send(file = res.data[randomized].url);
+          }
+          else if (res.data[0].url) {
+            msg.channel.send(file = res.data[0].url);
+          }
+          else msg.reply("fokoff modafoka i didnt find ur shit!");
         }
-        else if (res.data[0].url) {
-          msg.channel.send(file = res.data[0].url);
-        }
-        else msg.reply("fokoff modafoka i didnt find ur shit!");
       });
     }
   }
