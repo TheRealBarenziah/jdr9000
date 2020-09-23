@@ -5,6 +5,34 @@ bot.commands = new Discord.Collection();
 const botCommands = require("./commands");
 const man = require("./utils/man");
 
+// handle cleanup before nodejs exits
+function exitHandler(options, exitCode) {
+  if (options.cleanup) {
+    console.log("In exitHandler block: I shouldve cleanup things");
+  }
+  if (exitCode || exitCode === 0) console.error(exitCode);
+  if (options.log) console.log(options.log);
+  if (options.exit) process.exit();
+}
+process.stdin.resume(); // https://stackoverflow.com/a/14032965/11894221
+
+//do something when app is closing
+process.on("exit", exitHandler.bind(null,{cleanup:true}));
+
+//catches ctrl+c event
+process.on("SIGINT", exitHandler.bind(null, {exit:true}));
+
+// catches "kill pid" (for example: nodemon restart)
+process.on("SIGUSR1", exitHandler.bind(null, {exit:true}));
+process.on("SIGUSR2", exitHandler.bind(null, {exit:true}));
+
+//catches SIGTERM
+process.on("SIGTERM", exitHandler.bind(null, {exit:true, log: "You just killed me -15... UwU"}));
+
+//catches uncaught exceptions
+process.on("uncaughtException", exitHandler.bind(null, {exit:true}));
+
+// map commands to bot
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
 });
