@@ -36,8 +36,10 @@
     "node-opus": "^0.3.3",
     "path": "^0.12.7",
     "simple-youtube-api": "^5.2.1",
+    "tfaker": "^0.1.0",
     "utf-8-validate": "^5.0.2",
     "uwufy": "^1.0.6",
+    "waifu-generator": "^1.1.1",
     "ytdl-core": "^3.2.2"
   },
   "devDependencies": {

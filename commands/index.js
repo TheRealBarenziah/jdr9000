@@ -7,5 +7,6 @@ module.exports = {
   jdr: require("./jdr"),
   heapdump: require("./heapdump"),
   gif: require("./gif"),
-  clfu: require("./clfu")
+  clfu: require("./clfu"),
+  waifu: require("./waifu")
 };
