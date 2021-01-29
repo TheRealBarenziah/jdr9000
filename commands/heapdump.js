@@ -2,6 +2,7 @@ const heapdump = require("heapdump");
 const path = require("path");
 
 module.exports = {
+  /*
   name: "heapdump",
   description: "Only works if `NODE_ENV=DEVELOPMENT`. Pass `!` as argument to write a heapsnapshot into the ./heapdumps folder. Pass `gc` as argument to manually call the garbage collector (only works if environment variable `NODE_ENV` equals `development`)",
   execute(msg, args) {
@@ -19,4 +20,5 @@ module.exports = {
       }
     }
   }
+  */
 };
