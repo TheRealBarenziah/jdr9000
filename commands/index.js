@@ -1,6 +1,7 @@
 module.exports = {
   omaewa: require("./omaewa"),
   roll: require("./roll"),
+  r: require("./r"),
   judgement: require("./judgement"),
   stop: require("./stop"),
   gandalf: require("./gandalf"),
