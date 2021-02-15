@@ -1,5 +1,6 @@
 const path = require("path");
 const soundsDir = require("../assets/sounds/soundsDir");
+const gifsDir = require("../assets/gifs/gifsDir");
 
 module.exports = {
   name: "gandalf",
@@ -7,7 +8,7 @@ module.exports = {
   execute(msg) {
     const voiceChannel = msg.member.voiceChannel;
     if (typeof voiceChannel !== "undefined") {
-      msg.channel.send("Do not take me for some conjurer of cheap tricks !", { files: ["https://i.imgur.com/azbSS3q.gif"] })
+      msg.channel.send("Do not take me for some conjurer of cheap tricks !", { files: [path.join(gifsDir, "gandalf.gif")] })
         .then(() => {
           voiceChannel.join()
             .then(connection => {
