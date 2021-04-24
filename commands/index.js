@@ -9,5 +9,6 @@ module.exports = {
   heapdump: require("./heapdump"),
   gif: require("./gif"),
   clfu: require("./clfu"),
-  waifu: require("./waifu")
+  waifu: require("./waifu"),
+  fear: require("./fear")
 };
