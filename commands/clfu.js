@@ -93,20 +93,25 @@ module.exports = {
         await clfu(`search:${input}`)
           .then(res => {
             const { output1, output2, output3 } = { ...formatArray(res) };
-            msg.channel.send(output1)
-              .then(() => output2.length > 0
-                ?
-                msg.channel.send(output2)
-                  .then(() =>
-                    output3.length > 0
-                      ?
-                      msg.channel.send(output3)
-                      :
-                      null
-                  )
-                  .catch(e => e)
-                : null
-              );
+            if(output1){
+              msg.channel.send(output1)
+                .then(() => output2.length > 0
+                  ?
+                  msg.channel.send(output2)
+                    .then(() =>
+                      output3.length > 0
+                        ?
+                        msg.channel.send(output3)
+                        :
+                        null
+                    )
+                    .catch(e => e)
+                  : null
+                );
+            }
+            else{
+              msg.channel.send(`No results found for \`${input}\` in clfu database!`);
+            }
           });
       }
     }
