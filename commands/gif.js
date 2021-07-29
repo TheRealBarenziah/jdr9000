@@ -35,8 +35,8 @@ module.exports = {
       return null;
     }
     else if (args[0] === "ah") {
-      //ah(msg);
-      msg.channel.send("I am the OG bot BITCH !!! uwu");
+      ah(msg);
+      msg.channel.send(`*By the way, did you know you could directly call \`${prefix}ah\` command? Try it out :)*`);
     }
     else if (args[0] === "random") {
       const querystring = await randomWord();
