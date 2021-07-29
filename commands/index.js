@@ -10,5 +10,6 @@ module.exports = {
   gif: require("./gif"),
   clfu: require("./clfu"),
   waifu: require("./waifu"),
-  fear: require("./fear")
+  fear: require("./fear"),
+  ah: require("./ah")
 };

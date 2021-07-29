@@ -5,6 +5,7 @@ const GIPHYTOKEN = process.env.GIPHY_API_KEY;
 const giphy = require("giphy-api")(GIPHYTOKEN);
 const roll = require("../utils/roll");
 const axios = require("axios");
+const ah = require("../utils/ah");
 
 const randomWord = async () => new Promise((resolve, reject) => {
   return axios.get("https://random-word-api.herokuapp.com/word?number=1&swear=1")
@@ -34,29 +35,11 @@ module.exports = {
       return null;
     }
     else if (args[0] === "ah") {
-      const voiceChannel = msg.member.voiceChannel;
-      if (voiceChannel) {
-        voiceChannel.join()
-          .then(connection => {
-            const dispatcher = connection.playFile(path.join(soundsDir, "ah.wav"), { volume: 0.6 });
-            msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
-            dispatcher.on("end", () => {
-              voiceChannel.leave();
-            });
-          })
-          .catch(e => console.error(e));
-        return null;
-      }
-      else {
-        msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
-        return null;
-      }
+      //ah(msg);
+      msg.channel.send("I am the OG bot BITCH !!! uwu");
     }
     else if (args[0] === "random") {
-
       const querystring = await randomWord();
-
-
       // console.log("querystring : ", querystring)      https://random-word-api.herokuapp.com/word?number=1&swear=1
       console.log("Random word was: ", querystring);
       giphy.random({

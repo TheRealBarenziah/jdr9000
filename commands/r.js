@@ -4,7 +4,7 @@ const prefix = require("../utils/prefix");
 
 module.exports = {
   name: "r",
-  description: `Default roll100, but even shorter. For non-default behavior please use \`${prefix}roll\``,
+  description: `Default roll100, but even shorter. For non-default behavior please use \`${prefix}roll\` !`,
   execute(msg, args) {
     if (args.length === 0) {
       msg.reply(" rolling 1d100 :\n" + colorizeText.orange(roll(100).toString()));
