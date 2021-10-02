@@ -25,7 +25,8 @@ const sufficientlyEngineeredSecurityRoutines = (userInput, userId) => {
 
   try {
     // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/examples/making-an-eval-command.md
-    let toString = userInput.join(" ");
+    console.log("user input ", userInput);
+    let toString = Array.isArray(userInput) ? userInput.join(" ") : userInput;
     const sanitized = typeof userInput === "string" ?
       toString.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203))
       :
@@ -48,7 +49,7 @@ module.exports = (msg, args) => {
     || args[0].includes("-public")
   ) {
     if (args.length > 1) {
-      args = args.shift();
+      args.shift();
       publicMode = true;
     }
   }
