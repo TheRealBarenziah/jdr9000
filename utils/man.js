@@ -11,11 +11,11 @@ module.exports = {
     const cmd = args[0];
 
     const pushMsg = (args, string) => {
-      if (args.includes("--public") || args.includes("-p") || args.includes("-public")){
+      if (args.includes("--public") || args.includes("-p") || args.includes("-public")) {
         msg.channel.send(string);
       }
       else msg.author.send(string);
-    }; 
+    };
 
     fs.readdirSync(commandsDir)
       .forEach((file) => {
@@ -54,7 +54,7 @@ module.exports = {
       }
     }
 
-    else if ((cmd === "jdr9000")) {
+    else if ((cmd === "jdr9000") || (cmd === "command")) {
       pushMsg(args, `\`\`\`Available commands:\n${commands.map(c => `${prefix}${c}\n`).join("")}\n\`\`\``);
     }
 

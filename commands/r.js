@@ -1,5 +1,5 @@
 const roll = require("../utils/roll.js");
-const colorizeText = require("../utils/colorizeText.js");
+const orange = require("../utils/format.js");
 const prefix = require("../utils/prefix");
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
   description: `Default roll100, but even shorter. For non-default behavior please use \`${prefix}roll\` !`,
   execute(msg, args) {
     if (args.length === 0) {
-      msg.reply(" rolling 1d100 :\n" + colorizeText.orange(roll(100).toString()));
+      msg.reply(" rolling 1d100 :\n" + orange(roll(100).toString()));
       return null;
     }
     else {

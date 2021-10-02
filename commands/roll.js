@@ -1,5 +1,5 @@
 const roll = require("../utils/roll.js");
-const colorizeText = require("../utils/colorizeText.js");
+const orange = require("../utils/format.js");
 const isNumeric = require("../utils/isNumeric.js");
 const prefix = require("../utils/prefix");
 const formatDices = require("../utils/format").dices;
@@ -9,11 +9,11 @@ module.exports = {
   description: `Takes an argument \`${prefix}roll XdY\` where X is the number of dices you want, & Y the number of faces for the dices.\nYou can also pass a criteria to filter your results, f.e \`${prefix}roll 3d100>20\``,
   execute(msg, args) {
     if (args.length === 0) {
-      msg.reply(" rolling 1d100 :\n" + colorizeText.orange(roll(100).toString()));
+      msg.reply(" rolling 1d100 :\n" + orange(roll(100).toString()));
       return null;
     }
     else if (args.length === 1 && (Number(args[0]) <= 100 && Number(args[0]) >= 0)) {
-      msg.reply(` rolling 1d${args[0]} :\n` + colorizeText.orange(roll(args[0]).toString()));
+      msg.reply(` rolling 1d${args[0]} :\n` + orange(roll(args[0]).toString()));
       return null;
     }
     const parsedArg = args[0].split("d");
@@ -61,7 +61,7 @@ module.exports = {
             const sortedResults = results.sort((a, b) => a - b);
             const sum = results.reduce((a, b) => a + b, 0);
 
-            msg.reply(" rolling " + diceQty + "d" + diceSize + ":\n" + colorizeText.orange(sortedResults.toString() + `\nTotal: ${sum} `));
+            msg.reply(" rolling " + diceQty + "d" + diceSize + ":\n" + orange(sortedResults.toString() + `\nTotal: ${sum} `));
           }
           else {
             msg.channel.send(`Argument invalid: must be \`${prefix}roll XdY\` where X is maximum 100 & Y is maximum 1000 !`);
