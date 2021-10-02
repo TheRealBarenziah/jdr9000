@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jdr
-        image: jdr9000:v1_9d3fb65
+        image: jdr9000:v1_05cd27d
         command: ["node"]
         #args: ["--expose-gc", "--trace_gc", "index.js"]
         args: ["--expose-gc", "index.js"]
@@ -34,6 +34,8 @@ spec:
             value: cluster,net,http,fs,tls,module,timers
           - name: NODE_ENV
             value: development
+          - name: POWERUSERS
+            value: 391687309977976800,367923609278218240
           - name: TOKEN
             valueFrom:
               secretKeyRef:
