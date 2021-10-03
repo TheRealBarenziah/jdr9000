@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "develop": "nodemon index.js",
+    "develop": "nodemon --trace-warnings index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint --color . --ext .js,.jsx",
     "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js,.jsx"
