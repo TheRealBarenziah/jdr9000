@@ -7,7 +7,7 @@ module.exports = (msg) => {
     voiceChannel.join()
       .then(connection => {
         const dispatcher = connection.playFile(path.join(soundsDir, "ah.wav"), { volume: 0.6 });
-        msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
+        msg.channel.send("https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
         dispatcher.on("end", () => {
           voiceChannel.leave();
         });
@@ -16,7 +16,7 @@ module.exports = (msg) => {
     return null;
   }
   else {
-    msg.channel.send(file = "https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
+    msg.channel.send("https://media.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif");
     return null;
   }
 };
