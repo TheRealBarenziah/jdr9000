@@ -9,12 +9,14 @@ module.exports = {
 
       if ((args.length === 1) && (args[0] === "!")) {
         heapdump.writeSnapshot(path.join(__dirname, `../heapdumps/${process.env.HOSTNAME}.${Date.now()}.heapsnapshot`));
+        return null;
       }
       else if ((args.length === 1) && (args[0] === "gc")) {
         console.log("Proc garbage collector");
         global.gc();
+        return null;
       }
-      else return;
+      else return null;
     }
     else if ((args.length === 1) && (args[0] === "env")) {
       msg.author.send(`My environment is currently set to '${process.env.NODE_ENV}'`);

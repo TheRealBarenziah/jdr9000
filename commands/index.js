@@ -9,6 +9,7 @@ module.exports = {
   jdr: require("./jdr"),
   judgement: require("./judgement"),
   omaewa: require("./omaewa"),
+  play: require("./play"),
   roll: require("./roll"),
   r: require("./r"),
   stop: require("./stop"),

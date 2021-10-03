@@ -45,6 +45,8 @@ const prefix = process.env.PREFIX ? process.env.PREFIX : "/";
 
 bot.login(TOKEN);
 
+const globalQ = new Map();
+
 bot.on("ready", () => {
   console.info(`Logged as ${bot.user.tag}!`);
   return null;
@@ -62,7 +64,8 @@ bot.on("message", msg => {
   if (!bot.commands.has(command)) return;
 
   try {
-    bot.commands.get(command).execute(msg, args);
+    const currentQ = globalQ.get(msg.guild.id);
+    bot.commands.get(command).execute(msg, args, globalQ, currentQ);
   }
   catch (e) {
     console.error(e);
