@@ -5,5 +5,6 @@ module.exports = {
   description: "Invoke the spirit of Denis Brogniart.",
   execute(msg) {
     ah(msg);
+    return null;
   },
 };

@@ -15,5 +15,6 @@ module.exports = {
       }
     }
     else msg.channel.send("I dont take that kind of arguments, only mentions...");
+    return null;
   },
 };

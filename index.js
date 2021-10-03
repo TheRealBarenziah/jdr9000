@@ -47,6 +47,7 @@ bot.login(TOKEN);
 
 bot.on("ready", () => {
   console.info(`Logged as ${bot.user.tag}!`);
+  return null;
 });
 
 bot.on("message", msg => {
@@ -67,4 +68,5 @@ bot.on("message", msg => {
     console.error(e);
     msg.reply("There was an error trying to execute that command!");
   }
+  return null;
 });

@@ -64,5 +64,6 @@ module.exports = {
     else {
       msg.author.send(`Command invalid: try **${prefix}man jdr9000** (or **${prefix}man *command*** to learn about a specific command)`);
     }
+    return null;
   }
 };

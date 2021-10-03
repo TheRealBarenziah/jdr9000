@@ -6,4 +6,5 @@ module.exports = (json) => {
       return console.error(err);
     }
   });
+  return null;
 };

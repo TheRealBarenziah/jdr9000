@@ -57,6 +57,7 @@ module.exports = (msg, args) => {
   const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(args, authorId);
   if (!mandatoryCheck.success) {
     msg.author.send(mandatoryCheck.answerToAuthor);
+    return null;
   }
   else {
     const yolo = eval(mandatoryCheck.maliciousCode);

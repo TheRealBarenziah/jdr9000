@@ -21,5 +21,6 @@ module.exports = {
         }).catch(e => console.error(e));
     }
     else msg.channel.send("Thou shalt be in a voice channel to use this, foool !");
+    return null;
   }
 };

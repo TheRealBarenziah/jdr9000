@@ -19,5 +19,6 @@ module.exports = {
     else if ((args.length === 1) && (args[0] === "env")) {
       msg.author.send(`My environment is currently set to '${process.env.NODE_ENV}'`);
     }
+    return null;
   }
 };

@@ -5,5 +5,6 @@ module.exports = {
     const voiceChannel = msg.member.voiceChannel;
     msg.channel.send("Okay, I'll leave. UwU");
     voiceChannel.leave();
+    return null;
   }
 };

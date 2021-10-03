@@ -68,5 +68,6 @@ module.exports = {
       }
     }
     else msg.author.send(`To initialize your character sheet, please type  \`${prefix}jdr init\``);
+    return null;
   },
 };
