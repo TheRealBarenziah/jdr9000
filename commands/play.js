@@ -13,7 +13,7 @@ const handleYtUrl = (string) => {
 };
 
 
-function play(globalQ, guild, song) {
+async function play(globalQ, guild, song) {
   const serverQueue = globalQ.get(guild.id);
   if (!song) {
     console.log("!song; should leave voiceChannel");
@@ -21,11 +21,16 @@ function play(globalQ, guild, song) {
     globalQ.delete(guild.id);
     return;
   }
-  console.log("OBTWWW currentConstruct.connection in play ", serverQueue.connection);
+  //console.log("OBTWWW currentConstruct.connection in play ", serverQueue.connection);
+  console.log("... obtw ytdl(song.songId) ", ytdl(song.songId)); // response: PassThrough{} (~ a stream)
   const dispatcher = serverQueue.connection
-    .play(ytdl(song.url))
+    .playStream(ytdl(song.songId))
+    .on("start", () => {
+      console.log("OHAIO on start");
+    })
     .on("finish", () => {
       serverQueue.songs.shift();
+      console.log("ohaio, onFinish...");
       play(globalQ, guild, serverQueue.songs[0]);
     })
     .on("error", error => {
@@ -33,6 +38,7 @@ function play(globalQ, guild, song) {
     });
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
   serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+  return await dispatcher;
 }
 
 module.exports = {
@@ -41,6 +47,7 @@ module.exports = {
   async execute(msg, args = [], globalQ, currentQ) {
     console.log("in play, ... args: ", args);
     const voiceChannel = msg.member.voiceChannel;
+    console.log("voiceChannel 44 ", voiceChannel);
     if (!voiceChannel)
       return msg.channel.send(
         "You need to be in a voice channel to play music!"
@@ -52,6 +59,7 @@ module.exports = {
       );
     }
     const song = handleYtUrl(args[0]);
+    console.log("nani song ", song);
     if (!currentQ) {
       console.log("!currentQ, initializing qConstruct ");
       const queueContruct = {
@@ -68,9 +76,8 @@ module.exports = {
       queueContruct.songs.push(song);
 
       try {
-        const connection = await voiceChannel.join();
-        queueContruct.connection = connection;
-        play(globalQ, msg.guild, queueContruct.songs[0]);
+        queueContruct.connection = await voiceChannel.join();
+        await play(globalQ, msg.guild, queueContruct.songs[0]);
       } catch (err) {
         console.log(err);
         globalQ.delete(msg.guild.id);
