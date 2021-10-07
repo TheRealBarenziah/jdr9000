@@ -1,5 +1,6 @@
 module.exports = {
   ah: require("./ah"),
+  aws: require("./aws"),
   clfu: require("./clfu"),
   eval: require("./eval"),
   fear: require("./fear"),
