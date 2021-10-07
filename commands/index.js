@@ -1,5 +1,6 @@
 module.exports = {
   ah: require("./ah"),
+  ["async-aws"]: require("./async-aws"),
   aws: require("./aws"),
   clfu: require("./clfu"),
   eval: require("./eval"),
