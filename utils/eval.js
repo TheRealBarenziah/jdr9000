@@ -27,11 +27,23 @@ const sufficientlyEngineeredSecurityRoutines = (userInput, userId) => {
     // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/examples/making-an-eval-command.md
     console.log("user input ", userInput);
     let toString = Array.isArray(userInput) ? userInput.join(" ") : userInput;
+    const chadPrimitive = toString;
+    const fiveFirstChars = chadPrimitive.substring(0, 5);
+    if (fiveFirstChars === "```js") {
+      console.log("im in yr if, toString = ", toString);
+      console.log("notDoign.. ", chadPrimitive);
+      const js = chadPrimitive.substring(6, chadPrimitive.length - 3);
+      console.log("js: ", js);
+      const woLinebreaks = js.replace(/\r?\n|\r/g, "");
+      console.log("woLineBreaks = ", woLinebreaks);
+      console.log("chadPrimitive? ", chadPrimitive);
+      toString = woLinebreaks;
+    }
     const sanitized = typeof userInput === "string" ?
       toString.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203))
       :
       toString;
-
+    console.log("anyway sanitized= ", sanitized);
     output.success = true;
     output.maliciousCode = sanitized;
   } catch (error) {
@@ -59,9 +71,20 @@ module.exports = (msg, args) => {
     msg.author.send(mandatoryCheck.answerToAuthor);
   }
   else {
-    const yolo = eval(mandatoryCheck.maliciousCode);
-    const result = yolo ? prettify(pimped(yolo)) : `\`${args.join(" ")}\`\nhave no return value; what did you expect?`;
-    //msg.author.send(result);
-    return publicMode ? msg.channel.send(result) : msg.author.send(result);
+    try {
+      const yolo = eval(mandatoryCheck.maliciousCode);
+      const result = yolo ? prettify(pimped(yolo)) : `\`${args.join(" ")}\`\nhave no return value; what did you expect?`;
+      return publicMode ? msg.channel.send(result) : msg.author.send(result);
+    } catch (error) {
+      const limitFreemiumUsersExperience = String(error).split("\n", 1)[0];
+      // bondage the freemium scum with great performance: https://stackoverflow.com/a/37133017
+      const intolerablePublicity = "Want the full errortrace? Fork me ( or pay me :heart_eyes: )\nhttps://github.com/TheRealBarenziah/jdr9000/blob/master/utils/eval.js";
+      const outut = prettify(pimped(limitFreemiumUsersExperience)) + intolerablePublicity;
+      return publicMode ?
+        msg.channel.send(`Oopsie! It doesnt seem to like that :\n${outut}`)
+        :
+        msg.author.send(`Oopsie! It doesnt seem to like that :\n${outut}`);
+    }
   }
+  return null;
 };
