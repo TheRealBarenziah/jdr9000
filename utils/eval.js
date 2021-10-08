@@ -1,7 +1,8 @@
 const prettify = require("./format").json;
 const pimped = require("util").inspect;
+const isAuthorPoweruser = require("./isAuthorPoweruser");
 
-const sufficientlyEngineeredSecurityRoutines = (userInput, userId) => {
+const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
   let output = {
     success: false,
     answerToAuthor: "",
@@ -9,41 +10,30 @@ const sufficientlyEngineeredSecurityRoutines = (userInput, userId) => {
   };
 
   try {
-    const allowedCallers = Array.from(process.env.POWERUSERS).join("");
-    // console.log("allowedCallers.includes(userId) : ", allowedCallers.includes(userId));
-    // console.log("userId : ", userId);
-    if (!allowedCallers.includes(userId)) {
+    if (!isAuthorPoweruser(msg)) {
       output.answerToAuthor = "Seems you aren't allowed to use this. Contact your nearest printer/wifi expert for further assistance.";
       return output;
     }
   } catch (error) {
-    console.error(error);
     output.answerToAuthor = "process.env.POWERUSERS is fishy... Contact your nearest printer/wifi expert for further assistance.";
     return output;
   }
 
-
   try {
     // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/examples/making-an-eval-command.md
-    console.log("user input ", userInput);
-    let toString = Array.isArray(userInput) ? userInput.join(" ") : userInput;
+    // console.log("user input ", args);
+    let toString = Array.isArray(args) ? args.join(" ") : args;
     const chadPrimitive = toString;
     const fiveFirstChars = chadPrimitive.substring(0, 5);
     if (fiveFirstChars === "```js") {
-      console.log("im in yr if, toString = ", toString);
-      console.log("notDoign.. ", chadPrimitive);
       const js = chadPrimitive.substring(6, chadPrimitive.length - 3);
-      console.log("js: ", js);
       const woLinebreaks = js.replace(/\r?\n|\r/g, "");
-      console.log("woLineBreaks = ", woLinebreaks);
-      console.log("chadPrimitive? ", chadPrimitive);
       toString = woLinebreaks;
     }
-    const sanitized = typeof userInput === "string" ?
+    const sanitized = typeof args === "string" ?
       toString.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203))
       :
       toString;
-    console.log("anyway sanitized= ", sanitized);
     output.success = true;
     output.maliciousCode = sanitized;
   } catch (error) {
@@ -66,7 +56,7 @@ module.exports = (msg, args) => {
     }
   }
   console.log("Ohaio, msg.author.id of 'eval' caller:", authorId);
-  const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(args, authorId);
+  const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(msg, args);
   if (!mandatoryCheck.success) {
     msg.author.send(mandatoryCheck.answerToAuthor);
   }
