@@ -12,7 +12,7 @@ module.exports = {
     const doggoPath = path.join(gifsDir, "doggos");
     const gifs = await asyncReadDir(doggoPath);
     const randomIndex = roll(gifs.length) - 1;
-    msg.channel.send(`Dont wowwy! Im asyncronously ${bs} ~woof~`, { files: [path.join(doggoPath, gifs[randomIndex])] });
+    msg.channel.send(`Dont wowwy! Im asyncronously ${bs}... ~woof~`, { files: [path.join(doggoPath, gifs[randomIndex])] });
     return null;
   }
 };

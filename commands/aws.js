@@ -18,7 +18,9 @@ module.exports = {
       return files;
     });
     const randomIndex = roll(gifs.length) - 1;
-    msg.channel.send(`Dont wowwy I know stuff; ${bs} ~woof~`, { files: [path.join(doggoPath, gifs[randomIndex])] })
+    const capitalize = s => (s && s[0].toUpperCase() + s.slice(1)) || "";
+
+    msg.channel.send(`Dont wowwy I know stuff! ${capitalize(bs)}... ~woof~`, { files: [path.join(doggoPath, gifs[randomIndex])] })
       .catch(e => console.error(e));
   }
 };
