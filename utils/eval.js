@@ -44,7 +44,6 @@ const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
 };
 
 module.exports = (msg, args) => {
-  const authorId = Number(msg.author.id);
   let publicMode = false;
   if (args[0].includes("--public")
     || args[0].includes("-p")
@@ -55,7 +54,7 @@ module.exports = (msg, args) => {
       publicMode = true;
     }
   }
-  console.log("Ohaio, msg.author.id of 'eval' caller:", authorId);
+  console.log("Ohaio, msg.author.id of 'eval' caller:", msg.author.id);
   const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(msg, args);
   if (!mandatoryCheck.success) {
     msg.author.send(mandatoryCheck.answerToAuthor);
