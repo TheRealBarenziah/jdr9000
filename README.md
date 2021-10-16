@@ -44,6 +44,8 @@ If you don't know your `user.id`, calling `eval` or `sh` will log it in console.
 - `/sh` Run bash commands thanks to [child_process.exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) & returns stdout in Discord
 - `/heapdump` Takes an argument. ! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC. This feature is for development only: if your bot is available to other people, please care to run `NODE_ENV=production node index.js` to ensure that feature is disabled.
 
+# Install
+
 ## Dependencies:
 
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) _(terminal)_
