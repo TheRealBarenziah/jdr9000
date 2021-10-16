@@ -2,11 +2,11 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const isAuthorPoweruser = require("./isAuthorPoweruser");
 const support = require("./supportAssistance");
+const clg = require("./log").cyan;
 const prettify = require("./format").bash;
 
 module.exports = async (msg, args) => {
-  const command = args.join(" ");
-  console.log(`'sh' msg.author.id: ${msg.author.id}; argument: `, command);
+  clg(`msg.author.id of 'sh' caller: ${msg.author.id}`);
   if (isAuthorPoweruser(msg)) {
     try {
       const { stdout, stderr } = await exec(args.join(" "));

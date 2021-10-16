@@ -1,6 +1,8 @@
 const prettify = require("./format").json;
 const pimped = require("util").inspect;
 const isAuthorPoweruser = require("./isAuthorPoweruser");
+const support = require("./supportAssistance");
+const clg = require("./log").cyan;
 
 const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
   let output = {
@@ -11,17 +13,16 @@ const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
 
   try {
     if (!isAuthorPoweruser(msg)) {
-      output.answerToAuthor = "Seems you aren't allowed to use this. Contact your nearest printer/wifi expert for further assistance.";
+      output.answerToAuthor = support("Seems you aren't allowed to use this.");
       return output;
     }
   } catch (error) {
-    output.answerToAuthor = "process.env.POWERUSERS is fishy... Contact your nearest printer/wifi expert for further assistance.";
+    output.answerToAuthor = support("process.env.POWERUSERS is fishy...");
     return output;
   }
 
   try {
     // https://github.com/AnIdiotsGuide/discordjs-bot-guide/blob/master/examples/making-an-eval-command.md
-    // console.log("user input ", args);
     let toString = Array.isArray(args) ? args.join(" ") : args;
     const chadPrimitive = toString;
     const fiveFirstChars = chadPrimitive.substring(0, 5);
@@ -45,16 +46,13 @@ const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
 
 module.exports = (msg, args) => {
   let publicMode = false;
-  if (args[0].includes("--public")
-    || args[0].includes("-p")
-    || args[0].includes("-public")
-  ) {
+  if (args[0].includes("-p")) {
     if (args.length > 1) {
       args.shift();
       publicMode = true;
     }
   }
-  console.log("Ohaio, msg.author.id of 'eval' caller:", msg.author.id);
+  clg(`msg.author.id of 'eval' caller: ${msg.author.id}`);
   const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(msg, args);
   if (!mandatoryCheck.success) {
     msg.author.send(mandatoryCheck.answerToAuthor);
@@ -62,17 +60,14 @@ module.exports = (msg, args) => {
   else {
     try {
       const yolo = eval(mandatoryCheck.maliciousCode);
-      const result = yolo ? prettify(pimped(yolo)) : `\`${args.join(" ")}\`\nhave no return value; what did you expect?`;
-      return publicMode ? msg.channel.send(result) : msg.author.send(result);
+      const result = yolo ? prettify(pimped(yolo)) : `\`${mandatoryCheck.maliciousCode}\`\nhave no return value; what did you expect?`;
+      return msg[publicMode ? "channel" : "author"].send(result);
     } catch (error) {
       const limitFreemiumUsersExperience = String(error).split("\n", 1)[0];
       // bondage the freemium scum with great performance: https://stackoverflow.com/a/37133017
-      const intolerablePublicity = "Want the full errortrace? Fork me ( or pay me :heart_eyes: )\nhttps://github.com/TheRealBarenziah/jdr9000/blob/master/utils/eval.js";
-      const outut = prettify(pimped(limitFreemiumUsersExperience)) + intolerablePublicity;
-      return publicMode ?
-        msg.channel.send(`Oopsie! It doesnt seem to like that :\n${outut}`)
-        :
-        msg.author.send(`Oopsie! It doesnt seem to like that :\n${outut}`);
+      const intolerablePublicity = "Want the full errortrace? Fork me ( or pay me :heart_eyes: ) `https://github.com/TheRealBarenziah/jdr9000/blob/master/utils/eval.js`";
+      const output = prettify(pimped(limitFreemiumUsersExperience)) + intolerablePublicity;
+      return msg[publicMode ? "channel" : "author"].send(output);
     }
   }
   return null;
