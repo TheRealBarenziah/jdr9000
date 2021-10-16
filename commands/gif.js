@@ -8,7 +8,7 @@ const ah = require("../utils/ah");
 const randomWord = async () => new Promise((resolve, reject) => {
   return axios.get("https://random-word-api.herokuapp.com/word?number=1&swear=1")
     .then((response) => {
-      console.log("response.data : ", response.data);
+      console.log("random word API response : ", response.data);
       if (response.data) {
         resolve(String(response.data));
       }
@@ -45,9 +45,7 @@ module.exports = {
         tag: querystring ? querystring : "girl",
         rating: "g"
       }, function (err, res) {
-        // console.log("res", res);
         if (err) return console.error(err);
-        // console.log(res.data);
         if (res.data) {
           if (res.data.length > 0) {
             return null;
@@ -75,14 +73,10 @@ module.exports = {
     }
     else {
       const querystring = args.join().replace(/,/g, " ");
-      // console.log("querystring : ", querystring);
       return giphy.search({
         q: querystring,
         rating: "r",
         limit: 8
-        /*
-        ,fmt: "json"
-        */
       }, function (err, res) {
         // console.log("res", res);
         if (err) return console.error(err);
