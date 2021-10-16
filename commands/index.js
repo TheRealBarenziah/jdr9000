@@ -10,6 +10,7 @@ module.exports = {
   heapdump: require("./heapdump"),
   jdr: require("./jdr"),
   judgement: require("./judgement"),
+  lisp: require("./lisp"),
   omaewa: require("./omaewa"),
   roll: require("./roll"),
   r: require("./r"),
