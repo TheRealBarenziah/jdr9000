@@ -52,5 +52,6 @@ module.exports = {
     };
   },
   orange: (string) => `\`\`\`fix\n${string}\`\`\``,
-  json: (string) => `\`\`\`json\n${string}\`\`\``
+  json: (string) => `\`\`\`json\n${string}\`\`\``,
+  bash: (string) => `\`\`\`bash\n${string}\`\`\``,
 };

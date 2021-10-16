@@ -13,6 +13,7 @@ module.exports = {
   omaewa: require("./omaewa"),
   roll: require("./roll"),
   r: require("./r"),
+  sh: require("./sh"),
   stop: require("./stop"),
-  waifu: require("./waifu")
+  waifu: require("./waifu"),
 };
