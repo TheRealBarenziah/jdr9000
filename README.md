@@ -28,7 +28,7 @@
 
 Allows arbitrary code execution, so it's only accessible to powerusers.
 
-##### Declare POWERUSERS
+### Declare POWERUSERS
 
 **by providing their `user.id` in POWERUSERS environment variable**, in csv format like so:
 
@@ -38,7 +38,7 @@ POWERUSERS=333331313111111111111331,13090932222222222222222
 
 If you don't know your `user.id`, calling `eval` or `sh` will log it in console.
 
-##### Commands
+### Commands
 
 - `/eval` Good ol' [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) accessible from Discord. Can optionally be passed a js blockcode for more readability.
 - `/sh` Run bash commands thanks to [child_process.exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) & returns stdout in Discord
