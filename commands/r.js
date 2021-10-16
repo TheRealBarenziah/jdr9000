@@ -1,5 +1,5 @@
 const roll = require("../utils/roll.js");
-const orange = require("../utils/format.js");
+const orange = require("../utils/format.js").orange;
 const prefix = require("../utils/prefix");
 
 module.exports = {

@@ -1,5 +1,5 @@
 const roll = require("../utils/roll.js");
-const orange = require("../utils/format.js");
+const orange = require("../utils/format.js").orange;
 const isNumeric = require("../utils/isNumeric.js");
 const prefix = require("../utils/prefix");
 const formatDices = require("../utils/format").dices;
