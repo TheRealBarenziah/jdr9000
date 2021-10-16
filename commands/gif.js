@@ -10,8 +10,8 @@ const ah = require("../utils/ah");
 const randomWord = async () => new Promise((resolve, reject) => {
   return axios.get("https://random-word-api.herokuapp.com/word?number=1&swear=1")
     .then((response) => {
-      console.log("response.data : ", response.data);
-      if(response.data){
+      console.log("random word API response : ", response.data);
+      if (response.data) {
         resolve(String(response.data));
       }
     })
@@ -46,20 +46,20 @@ module.exports = {
         tag: querystring ? querystring : "girl",
         rating: "g"
       },
-      function (err, res) {
-        // console.log("res", res);
-        if (err) return console.error(err);
-        // console.log(res.data);
-        if (res.data) {
-          
-          msg.channel.send(file = res.data.image_url);
-          return null;
+        function (err, res) {
+          // console.log("res", res);
+          if (err) return console.error(err);
+          // console.log(res.data);
+          if (res.data) {
+
+            msg.channel.send(file = res.data.image_url);
+            return null;
+          }
+          else {
+            msg.reply("... no result were found :(");
+            return null;
+          }
         }
-        else  {
-          msg.reply("... no result were found :(");
-          return null;
-        }
-      }
       );
     }
     else {

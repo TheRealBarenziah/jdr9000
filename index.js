@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const botCommands = require("./commands");
+const { mainLog } = require("./utils/format");
 const man = require("./utils/man");
 
 // handle cleanup before nodejs exits
@@ -56,7 +57,17 @@ bot.on("message", msg => {
   const args = msg.content.slice(prefix.length).split(" ");
   const command = args.shift().toLowerCase();
   const now = new Date().toString().split(" (")[0];
-  console.info(`[${now}] ${msg.author.username}#${msg.author.discriminator} called command ${command}, args: ${args}`);
+  const sexyLogObject = {
+    timestamp: now,
+    username: msg.author.username,
+    discriminator: msg.author.discriminator,
+    command,
+    args
+  };
+
+  console.log(mainLog(sexyLogObject));
+
+  // console.info(`[${now}] ${msg.author.username}#${msg.author.discriminator} called command ${command}, args: ${args}`);
 
   if (!bot.commands.has(command)) return;
 

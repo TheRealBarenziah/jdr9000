@@ -1,4 +1,5 @@
 const capitalize = require("./capitalizeFirstChar");
+const colors = require("colors");
 
 module.exports = {
   stats: (object) => {
@@ -55,4 +56,13 @@ module.exports = {
   json: (string) => `\`\`\`json\n${string}\`\`\``,
   bash: (string) => `\`\`\`bash\n${string}\`\`\``,
   lisp: (string) => `\`\`\`lisp\n${string}\`\`\``,
+  mainLog: ({
+    timestamp,
+    username,
+    discriminator,
+    command,
+    args }) => {
+    colors.enable();
+    return `${colors.blue.italic("[" + timestamp + "]")} ${colors.magenta(username + "#" + discriminator)} called command ${colors.green.bold(command)}, args: ${colors.green.italic(args)}`;
+  },
 };
