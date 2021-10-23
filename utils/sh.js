@@ -12,11 +12,12 @@ module.exports = async (msg, args) => {
     try {
       const result = await exec(args.join(" "))
         .catch(e => {
-          console.error("catch error in exec: ", e);
+          //console.error("catch error in exec: ", e);
           sendPotentiallyLongOutput({ string: String(e), msg, styleCb: (x) => prettify(x) });
         });
       if (result) {
-        sendPotentiallyLongOutput({ string: result, msg, styleCb: (x) => prettify(x) });
+        const output = result.stdout ? result.stdout : result.stderr ? result.stderr : "no output";
+        sendPotentiallyLongOutput({ string: output, msg, styleCb: (x) => prettify(x) });
       }
     } catch (error) {
       msg.channel.send("Error while exec'ing:", prettify(error));
