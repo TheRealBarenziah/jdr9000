@@ -10,16 +10,14 @@ module.exports = async (msg, args) => {
   clg(`msg.author.id of 'sh' caller: ${msg.author.id}`);
   if (isAuthorPoweruser(msg)) {
     try {
-      // let fileOutput = false;
-      // if (args.length > 1) {
-      //   if (args[0] === "-o") {
-      //     args.shift();
-      //     fileOutput = true;
-      //   }
-      // }
-      const { stdout, stderr } = await exec(args.join(" "));
-      const output = stderr ? `stderr returned something:\n${stderr}\nstdout returned:\n${stdout}` : stdout;
-      sendPotentiallyLongOutput({ string: output, msg, styleCb: (x) => prettify(x) });
+      const result = await exec(args.join(" "))
+        .catch(e => {
+          console.error("catch error in exec: ", e);
+          sendPotentiallyLongOutput({ string: String(e), msg, styleCb: (x) => prettify(x) });
+        });
+      if (result) {
+        sendPotentiallyLongOutput({ string: result, msg, styleCb: (x) => prettify(x) });
+      }
     } catch (error) {
       msg.channel.send("Error while exec'ing:", prettify(error));
     }
