@@ -57,9 +57,8 @@ module.exports = {
     else if ((cmd === "jdr9000") || (cmd === "command")) {
       pushMsg(args, `\`\`\`Available commands:\n${commands.map(c => `${prefix}${c}\n`).join("")}\n\`\`\``);
     }
-
-    else if (commands.includes(cmd)) {
-      pushMsg(args, `${cmd}: ${jdr9000[cmd].description}`);
+    else if (args.length === 0) {
+      pushMsg(args, `man: ${this.description}`);
     }
     else {
       msg.author.send(`Command invalid: try **${prefix}man jdr9000** (or **${prefix}man *command*** to learn about a specific command)`);

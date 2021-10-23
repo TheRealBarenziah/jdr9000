@@ -2,6 +2,7 @@ const prettify = require("./format").json;
 const pimped = require("util").inspect;
 const isAuthorPoweruser = require("./isAuthorPoweruser");
 const support = require("./supportAssistance");
+const sendPotentiallyLongOutput = require("./sendPotentiallyLongOutput");
 const clg = require("./log").cyan;
 
 const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
@@ -45,12 +46,17 @@ const sufficientlyEngineeredSecurityRoutines = (msg, args) => {
 };
 
 module.exports = (msg, args) => {
-  let publicMode = false;
-  if (args[0].includes("-p")) {
-    if (args.length > 1) {
-      args.shift();
-      publicMode = true;
-    }
+  //let publicMode = false;
+  // let fileOutput = false;
+  if (args.length > 1) {
+    // if (args[0].includes("-p")) {
+    //   args.shift();
+    //   publicMode = true;
+    // }
+    // if (args[0].includes("-o")) {
+    //   args.shift();
+    //   fileOutput = true;
+    // }
   }
   clg(`msg.author.id of 'eval' caller: ${msg.author.id}`);
   const mandatoryCheck = sufficientlyEngineeredSecurityRoutines(msg, args);
@@ -60,14 +66,26 @@ module.exports = (msg, args) => {
   else {
     try {
       const yolo = eval(mandatoryCheck.maliciousCode);
-      const result = yolo ? prettify(pimped(yolo)) : `\`${mandatoryCheck.maliciousCode}\`\nhave no return value; what did you expect?`;
-      return msg[publicMode ? "channel" : "author"].send(result);
+      const notice = "\n/!\\ Output above was truncated to fit Discord API limitations. Use -o flag to get full output as file.";
+      const truncated = yolo.length > 1988 ?
+        prettify(pimped(yolo.substring(0, 1886))) + notice
+        : prettify(pimped(yolo));
+
+      const result = yolo ? truncated : `\`${mandatoryCheck.maliciousCode}\`\nhave no return value; what did you expect?`;
+      const buf = Buffer.from(yolo, "utf-8");
+
+      return result ?
+        sendPotentiallyLongOutput({ string: yolo, msg, styleCb: (x) => prettify(pimped(x)) })
+        :
+        `\`${mandatoryCheck.maliciousCode}\`\nhave no return value; what did you expect?`;
     } catch (error) {
+      console.error(error);
       const limitFreemiumUsersExperience = String(error).split("\n", 1)[0];
       // bondage the freemium scum with great performance: https://stackoverflow.com/a/37133017
       const intolerablePublicity = "Want the full errortrace? Fork me ( or pay me :heart_eyes: ) `https://github.com/TheRealBarenziah/jdr9000/blob/master/utils/eval.js`";
       const output = prettify(pimped(limitFreemiumUsersExperience)) + intolerablePublicity;
-      return msg[publicMode ? "channel" : "author"].send(output);
+      return msg.channel.send(output);
+      // return msg[publicMode ? "channel" : "author"].send(output);
     }
   }
   return null;
