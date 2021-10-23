@@ -19,7 +19,7 @@ module.exports = async (msg, args) => {
       // }
       const { stdout, stderr } = await exec(args.join(" "));
       const output = stderr ? `stderr returned something:\n${stderr}\nstdout returned:\n${stdout}` : stdout;
-      sendPotentiallyLongOutput({ string: output, msg });
+      sendPotentiallyLongOutput({ string: output, msg, styleCb: (x) => prettify(x) });
     } catch (error) {
       msg.channel.send("Error while exec'ing:", prettify(error));
     }
