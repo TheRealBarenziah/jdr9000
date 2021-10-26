@@ -35,7 +35,7 @@ spec:
           - name: NODE_ENV
             value: development
           - name: POWERUSERS
-            value: 391687309977976800,367923609278218240
+            value: 391687309977976843,367923609278218240
           - name: TOKEN
             valueFrom:
               secretKeyRef:
