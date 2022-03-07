@@ -14,6 +14,7 @@ module.exports = {
   omaewa: require("./omaewa"),
   roll: require("./roll"),
   r: require("./r"),
+  say: require("./say"),
   sh: require("./sh"),
   stop: require("./stop"),
   waifu: require("./waifu"),

@@ -22,6 +22,7 @@
 - `/omaewa` Post a picture + mention
 - `/roll` Takes `XdY` argument, where X is the number of dices & Y the number of faces for dices. Ex: `/roll 3d100`
 - `/r` Shortcut for rolling 1D100
+- `/say` Implements [phraze](https://github.com/Serjeel-Ranjan-911/ASCII-Art-Cartoon-CLI) module
 - `/stop` Stop the sound played with `/judgement`
 
 ## Nerdy features:
