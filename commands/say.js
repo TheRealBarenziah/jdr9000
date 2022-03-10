@@ -3,23 +3,21 @@ const phraze = require("../utils/phrazerWrapper");
 
 module.exports = {
   name: "say",
-  description: `Cowsay is offensive to hindus & vegetarians alike, so here's a politically correct version.
-	Pass one or two arguments (in case of two args, the first word is the character you want to invoke)
-	Available characters: casper, bart, popeye, spongebob, homer, garfield, fred, squidward, pup, dachshund
-	Ex: \`${prefix}say casper Booo\``,
+  description: 
+`Cowsay is offensive to hindus & vegetarians alike, so here's a politically correct version.
+Pass one or two arguments (in case of two args, the first word is the character you want to invoke)
+Available characters: casper, bart, popeye, spongebob, homer, garfield, fred, squidward, pup, dachshund
+Ex: \`${prefix}say casper Booo\``,
   async execute(msg, args) {
     const available = ["casper", "bart", "popeye", "spongebob", "homer", "garfield", "fred", "squidward", "pup", "dachshund"];
     if(available.includes(args[0])){
       const optionalArg = args[0];
       args.shift();
-      console.log("IM IN IF, OBTW args",args,"...optionalArg nani ", optionalArg);
       await phraze(args.join(" "),msg, optionalArg);
     }
     else {
-      console.log("im in yr ELSE");
       await phraze(args.join(" "), msg, "homer");
     }
-    console.log("finally, in say.js *sadface*");
     return null;
   },
 };

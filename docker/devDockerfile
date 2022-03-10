@@ -1,4 +1,4 @@
-FROM node:14.4
+FROM node:17.7
 
 RUN apt-get update && \ 
     apt-get install -y apt-utils && \

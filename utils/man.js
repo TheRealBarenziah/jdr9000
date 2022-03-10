@@ -25,9 +25,14 @@ module.exports = {
           null;
       });
 
+    console.log("obtw commandsDir = ", commandsDir, "... cmd ? ", cmd);
+
     if ((cmd === "man") && (args.length === 1)) {
+      console.log("this =", this);
       msg.author.send(this.description);
     }
+
+ 
 
     else if ((args[0] === "jdr") && (args.length >= 2)) {
 
@@ -59,6 +64,12 @@ module.exports = {
     }
     else if (args.length === 0) {
       pushMsg(args, `man: ${this.description}`);
+    }
+    else if ((commands.includes(cmd)) && (args.length === 1)){
+      console.log("IM IN YR ELIF !!!");
+      const desc = jdr9000[cmd].description;
+      console.log("DESC NANIIII");
+      pushMsg(args, desc);
     }
     else {
       msg.author.send(`Command invalid: try **${prefix}man jdr9000** (or **${prefix}man *command*** to learn about a specific command)`);
