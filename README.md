@@ -52,7 +52,7 @@ If you don't know your `user.id`, calling `eval` or `sh` will log it in console.
 
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) _(terminal)_
 - [FFMPEG](https://www.ffmpeg.org/download.html) _(must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)_
-- [Node.js](https://nodejs.org/en/download/) >= 12 _(`node -v` to check)_
+- [Node.js](https://nodejs.org/en/download/) >= 13 _(`node -v` to check)_
 
 ## Launch project:
 
