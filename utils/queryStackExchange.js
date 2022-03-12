@@ -6,6 +6,7 @@ const context = new stackexchange(options);
 module.exports = (query) => new Promise((resolve, reject) => {
   const backups = ["unix", "superuser", "askubuntu","dba"];
   let retryCounter = 0;
+  let e; 
 
   const filter = {
     key: process.env.SE_API_KEY,
@@ -16,11 +17,14 @@ module.exports = (query) => new Promise((resolve, reject) => {
     q: query
   };
 
-  console.log("obtw query : ", query, "filter: ", filter);
+
+  // TODO! wrap in promise!!
   const querySe = () => context.search.advanced(filter, (err, results) => {
+    console.log("execing querySe, obtw query : ", query, "filter: ", filter);
+
     if (err){
-      console.error("err in queryStackExchange:\n",err);
-      reject(err);
+      console.log("error in querySe: ", err);
+      e = err;
     }  
 
     if(results){
@@ -46,6 +50,9 @@ module.exports = (query) => new Promise((resolve, reject) => {
         // only get the first links
         resolve(output.slice(0, 3));
       }
+      else{
+        console.log("resutls exists, but no result.items ! ");
+      }
     }
 
     else {
@@ -57,11 +64,21 @@ module.exports = (query) => new Promise((resolve, reject) => {
   });
 
   if(retryCounter <= backups.length){
-    querySe();
+    try {
+      console.log("im in yr while");
+      querySe();
+    } catch (error) {
+      console.error("Error trying querySe():",error);
+    }
   }
-  else{
-    // ELSE SHOULD SCRAP  "https://stackexchange.com/search?q=foo"
-    resolve([{title: "SHOULD SCRAP !!! >.<"}]);
+
+
+  if(e) {
+    console.log("Perhaps the real response was the error we made along the way");
+    reject(e);
   }
+  // ELSE SHOULD SCRAP  "https://stackexchange.com/search?q=foo"
+  resolve([{title: "SHOULD SCRAP !!! >.<"}]);
+  
 });
 
