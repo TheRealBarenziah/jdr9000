@@ -39,7 +39,7 @@
     "giphy-api": "^2.0.1",
     "node-opus": "^0.3.3",
     "path": "^0.12.7",
-    "phraze": "git+https://github.com/TheRealBarenziah/ASCII-Art-Cartoon-CLI",
+    "phraze": "^2.1.0",
     "simple-youtube-api": "^5.2.1",
     "tfaker": "^0.1.0",
     "utf-8-validate": "^5.0.2",

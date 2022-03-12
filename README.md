@@ -24,6 +24,7 @@
 - `/r` Shortcut for rolling 1D100
 - `/say` Implements [phraze](https://github.com/Serjeel-Ranjan-911/ASCII-Art-Cartoon-CLI) module
 - `/stop` Stop the sound played with `/judgement`
+- `/waifu` Posts an [anime girl](https://www.thiswaifudoesnotexist.net/)
 
 ## Nerdy features:
 
