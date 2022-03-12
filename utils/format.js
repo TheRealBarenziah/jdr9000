@@ -65,4 +65,11 @@ module.exports = {
     colors.enable();
     return `${colors.blue.italic("[" + timestamp + "]")} ${colors.magenta(username + "#" + discriminator)} called command ${colors.green.bold(command)}, args: ${colors.green.italic(args)}`;
   },
+  sofResult : (array) => {
+    let output = `Results found on ${array[0].site}:\n`;
+    array.forEach(result => {
+      output += `**${result.votes}** votes: ${result.link}\n`;
+    });
+    return output;
+  }
 };

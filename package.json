@@ -41,6 +41,7 @@
     "path": "^0.12.7",
     "phraze": "^2.1.0",
     "simple-youtube-api": "^5.2.1",
+    "stackexchange": "^2.0.0",
     "tfaker": "^0.1.0",
     "utf-8-validate": "^5.0.2",
     "uwufy": "^1.0.6",
