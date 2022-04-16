@@ -41,6 +41,11 @@ spec:
               secretKeyRef:
                 name: discord-api-token
                 key: TOKEN
+          - name: GIPHY_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: giphy-api-token
+                key: GIPHY_API_KEY
       volumes:
         - name: jdrbot-volume
           persistentVolumeClaim:
