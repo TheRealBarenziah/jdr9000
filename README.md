@@ -45,7 +45,7 @@ If you don't know your `user.id`, calling `eval` or `sh` will log it in console.
 - `/eval` Good ol' [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) accessible from Discord. Can optionally be passed a js blockcode for more readability.
 - `/sh` Run bash commands thanks to [child_process.exec](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) & returns stdout in Discord
 - `/lisp` Run some lisp thanks to [lips](https://www.npmjs.com/package/@jcubic/lips). Also accepts lisp blockcode.
-- `/heapdump` Takes an argument. ! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC. This feature is for development only: if your bot is available to other people, please care to run `NODE_ENV=production node index.js` to ensure that feature is disabled.
+- `/heapdump` Takes an argument. ! Need to run `node --expose-gc index.js` instead of your usual `node index.js` to be able to "manually" proc the GC.
 
 # Install
 
@@ -53,7 +53,7 @@ If you don't know your `user.id`, calling `eval` or `sh` will log it in console.
 
 - [A shell](https://media.istockphoto.com/photos/sea-shell-picture-id862062360) _(terminal)_
 - [FFMPEG](https://www.ffmpeg.org/download.html) _(must be on your system. Type `ffmpeg` or `ffmpeg -version` in terminal to check)_
-- [Node.js](https://nodejs.org/en/download/) >= 12 _(`node -v` to check)_
+- [Node.js](https://nodejs.org/en/download/) >= 13 _(`node -v` to check)_
 
 ## Launch project:
 
@@ -69,7 +69,7 @@ First time (in terminal): `git clone https://github.com/TheRealBarenziah/jdr9000
 
 ### Using Docker:
 
-- In the root directory, use `docker image build -t jdr9000:v2 -f docker/Dockerfile .` to build the image.
+- In the root directory, use `docker image build -t jdr9000:v2 -f docker/jdrDockerfile .` to build the image.
 - Use `docker container run -tid -e TOKEN=YourToken -e PREFIX=YourPrefix --name jdr-v2 --restart=always jdr9000:v2 node --expose-gc index.js` to launch the container from the image.
 
 ### Using Kubernetes:
