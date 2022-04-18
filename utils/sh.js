@@ -10,7 +10,7 @@ module.exports = async (msg, args) => {
   clg(`msg.author.id of 'sh' caller: ${msg.author.id}`);
   if (isAuthorPoweruser(msg)) {
     try {
-      const result = await exec(args.join(" "))
+      const result = await exec(args.join(" "), {shell: "/bin/bash"})
         .catch(e => {
           //console.error("catch error in exec: ", e);
           sendPotentiallyLongOutput({ string: String(e), msg, styleCb: (x) => prettify(x) });
