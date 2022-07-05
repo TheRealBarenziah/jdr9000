@@ -23,7 +23,7 @@
     "url": "git+https://github.com/TheRealBarenziah/jdr9000.git"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.8.0",
     "@jcubic/lips": "^0.20.3",
     "colors": "^1.4.0",
     "commandlinefu": "^0.0.6",
